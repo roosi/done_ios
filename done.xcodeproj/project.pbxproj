@@ -13,15 +13,19 @@
 		5F7FD57C18A3ECD300A8F5D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD57A18A3ECD300A8F5D1 /* InfoPlist.strings */; };
 		5F7FD57E18A3ECD300A8F5D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD57D18A3ECD300A8F5D1 /* main.m */; };
 		5F7FD58218A3ECD300A8F5D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD58118A3ECD300A8F5D1 /* AppDelegate.m */; };
-		5F7FD58518A3ECD300A8F5D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD58318A3ECD300A8F5D1 /* Main.storyboard */; };
-		5F7FD58818A3ECD300A8F5D1 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD58718A3ECD300A8F5D1 /* MasterViewController.m */; };
-		5F7FD58B18A3ECD300A8F5D1 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD58A18A3ECD300A8F5D1 /* DetailViewController.m */; };
 		5F7FD58D18A3ECD300A8F5D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD58C18A3ECD300A8F5D1 /* Images.xcassets */; };
 		5F7FD59418A3ECD300A8F5D1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7FD59318A3ECD300A8F5D1 /* XCTest.framework */; };
 		5F7FD59518A3ECD300A8F5D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7FD57118A3ECD300A8F5D1 /* Foundation.framework */; };
 		5F7FD59618A3ECD300A8F5D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F7FD57518A3ECD300A8F5D1 /* UIKit.framework */; };
 		5F7FD59E18A3ECD300A8F5D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD59C18A3ECD300A8F5D1 /* InfoPlist.strings */; };
 		5F7FD5A018A3ECD300A8F5D1 /* doneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD59F18A3ECD300A8F5D1 /* doneTests.m */; };
+		5F7FD5B018A698CA00A8F5D1 /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD5AF18A698CA00A8F5D1 /* TaskListViewController.m */; };
+		5F7FD5B818A6AA4700A8F5D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD5B718A6AA4700A8F5D1 /* Main.storyboard */; };
+		5F7FD5BC18A6B19300A8F5D1 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD5BB18A6B19300A8F5D1 /* Task.m */; };
+		5F7FD5BF18A7489E00A8F5D1 /* TaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD5BE18A7489E00A8F5D1 /* TaskList.m */; };
+		5F7FD5C318A7ED7D00A8F5D1 /* status_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD5C218A7ED7D00A8F5D1 /* status_default.png */; };
+		5F7FD60418A7EF1700A8F5D1 /* TaskListsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD60318A7EF1700A8F5D1 /* TaskListsPickerController.m */; };
+		5F7FD60718A7EF3100A8F5D1 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD60618A7EF3100A8F5D1 /* TaskViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,17 +49,24 @@
 		5F7FD57F18A3ECD300A8F5D1 /* done-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "done-Prefix.pch"; sourceTree = "<group>"; };
 		5F7FD58018A3ECD300A8F5D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5F7FD58118A3ECD300A8F5D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5F7FD58418A3ECD300A8F5D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5F7FD58618A3ECD300A8F5D1 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		5F7FD58718A3ECD300A8F5D1 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		5F7FD58918A3ECD300A8F5D1 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		5F7FD58A18A3ECD300A8F5D1 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		5F7FD58C18A3ECD300A8F5D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5F7FD59218A3ECD300A8F5D1 /* doneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = doneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F7FD59318A3ECD300A8F5D1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		5F7FD59B18A3ECD300A8F5D1 /* doneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "doneTests-Info.plist"; sourceTree = "<group>"; };
 		5F7FD59D18A3ECD300A8F5D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5F7FD59F18A3ECD300A8F5D1 /* doneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = doneTests.m; sourceTree = "<group>"; };
+		5F7FD5AE18A698CA00A8F5D1 /* TaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListViewController.h; sourceTree = "<group>"; };
+		5F7FD5AF18A698CA00A8F5D1 /* TaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListViewController.m; sourceTree = "<group>"; };
+		5F7FD5B718A6AA4700A8F5D1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5F7FD5BA18A6B19300A8F5D1 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		5F7FD5BB18A6B19300A8F5D1 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		5F7FD5BD18A7489E00A8F5D1 /* TaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskList.h; sourceTree = "<group>"; };
+		5F7FD5BE18A7489E00A8F5D1 /* TaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskList.m; sourceTree = "<group>"; };
+		5F7FD5C218A7ED7D00A8F5D1 /* status_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_default.png; path = ../../../Documents/status_default.png; sourceTree = "<group>"; };
+		5F7FD60218A7EF1700A8F5D1 /* TaskListsPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListsPickerController.h; sourceTree = "<group>"; };
+		5F7FD60318A7EF1700A8F5D1 /* TaskListsPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListsPickerController.m; sourceTree = "<group>"; };
+		5F7FD60518A7EF3100A8F5D1 /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
+		5F7FD60618A7EF3100A8F5D1 /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,13 +126,16 @@
 		5F7FD57718A3ECD300A8F5D1 /* done */ = {
 			isa = PBXGroup;
 			children = (
+				5F7FD5B718A6AA4700A8F5D1 /* Main.storyboard */,
+				5F7FD5B918A6B15F00A8F5D1 /* Model */,
+				5F7FD5AE18A698CA00A8F5D1 /* TaskListViewController.h */,
+				5F7FD5AF18A698CA00A8F5D1 /* TaskListViewController.m */,
+				5F7FD60518A7EF3100A8F5D1 /* TaskViewController.h */,
+				5F7FD60618A7EF3100A8F5D1 /* TaskViewController.m */,
+				5F7FD60218A7EF1700A8F5D1 /* TaskListsPickerController.h */,
+				5F7FD60318A7EF1700A8F5D1 /* TaskListsPickerController.m */,
 				5F7FD58018A3ECD300A8F5D1 /* AppDelegate.h */,
 				5F7FD58118A3ECD300A8F5D1 /* AppDelegate.m */,
-				5F7FD58318A3ECD300A8F5D1 /* Main.storyboard */,
-				5F7FD58618A3ECD300A8F5D1 /* MasterViewController.h */,
-				5F7FD58718A3ECD300A8F5D1 /* MasterViewController.m */,
-				5F7FD58918A3ECD300A8F5D1 /* DetailViewController.h */,
-				5F7FD58A18A3ECD300A8F5D1 /* DetailViewController.m */,
 				5F7FD58C18A3ECD300A8F5D1 /* Images.xcassets */,
 				5F7FD57818A3ECD300A8F5D1 /* Supporting Files */,
 			);
@@ -131,6 +145,7 @@
 		5F7FD57818A3ECD300A8F5D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5F7FD5C218A7ED7D00A8F5D1 /* status_default.png */,
 				5F7FD57918A3ECD300A8F5D1 /* done-Info.plist */,
 				5F7FD57A18A3ECD300A8F5D1 /* InfoPlist.strings */,
 				5F7FD57D18A3ECD300A8F5D1 /* main.m */,
@@ -155,6 +170,17 @@
 				5F7FD59C18A3ECD300A8F5D1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5F7FD5B918A6B15F00A8F5D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5F7FD5BA18A6B19300A8F5D1 /* Task.h */,
+				5F7FD5BB18A6B19300A8F5D1 /* Task.m */,
+				5F7FD5BD18A7489E00A8F5D1 /* TaskList.h */,
+				5F7FD5BE18A7489E00A8F5D1 /* TaskList.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,9 +259,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F7FD5B818A6AA4700A8F5D1 /* Main.storyboard in Resources */,
+				5F7FD5C318A7ED7D00A8F5D1 /* status_default.png in Resources */,
 				5F7FD58D18A3ECD300A8F5D1 /* Images.xcassets in Resources */,
 				5F7FD57C18A3ECD300A8F5D1 /* InfoPlist.strings in Resources */,
-				5F7FD58518A3ECD300A8F5D1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,9 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F7FD58218A3ECD300A8F5D1 /* AppDelegate.m in Sources */,
-				5F7FD58818A3ECD300A8F5D1 /* MasterViewController.m in Sources */,
+				5F7FD5B018A698CA00A8F5D1 /* TaskListViewController.m in Sources */,
+				5F7FD60418A7EF1700A8F5D1 /* TaskListsPickerController.m in Sources */,
+				5F7FD5BF18A7489E00A8F5D1 /* TaskList.m in Sources */,
+				5F7FD60718A7EF3100A8F5D1 /* TaskViewController.m in Sources */,
 				5F7FD57E18A3ECD300A8F5D1 /* main.m in Sources */,
-				5F7FD58B18A3ECD300A8F5D1 /* DetailViewController.m in Sources */,
+				5F7FD5BC18A6B19300A8F5D1 /* Task.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,14 +316,6 @@
 				5F7FD57B18A3ECD300A8F5D1 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		5F7FD58318A3ECD300A8F5D1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5F7FD58418A3ECD300A8F5D1 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		5F7FD59C18A3ECD300A8F5D1 /* InfoPlist.strings */ = {
@@ -466,6 +488,7 @@
 				5F7FD5A518A3ECD300A8F5D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5F7FD5A618A3ECD300A8F5D1 /* Build configuration list for PBXNativeTarget "doneTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +497,7 @@
 				5F7FD5A818A3ECD300A8F5D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
