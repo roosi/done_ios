@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @class TaskList;
+@class TaskListsDataController;
+
 @protocol TaskListPickerControllerDelegate;
 
 @interface TaskListsPickerController : UITableViewController <UIBarPositioningDelegate>
@@ -17,7 +19,7 @@
 
 @property (nonatomic) NSUInteger selectedIndex;
 
-@property NSMutableArray *taskLists;
+@property (nonatomic,strong) TaskListsDataController *dataController;
 
 @end
 

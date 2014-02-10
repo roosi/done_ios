@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TaskListsPickerController.h"
 
+@class TaskListsDataController;
+
 @interface TaskListViewController : UITableViewController <TaskListPickerControllerDelegate>
 
 @property NSMutableArray *tasks;
+
+@property (nonatomic,strong) TaskListsDataController *dataController;
 
 @end

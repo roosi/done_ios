@@ -10,6 +10,7 @@
 #import "TaskListsPickerController.h"
 #import "Task.h"
 #import "TaskList.h"
+#import "TaskListsDataController.h"
 
 @interface TaskListViewController ()
 
@@ -29,6 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.dataController = [TaskListsDataController sharedController];
+    self.title = [self.dataController objectInTaskListsAtIndex:[self.dataController selectedTaskList]].title;
     
     self.tasks = [[NSMutableArray alloc] init];
     [self loadTestData];
@@ -147,17 +151,6 @@
     [self.tableView reloadData];
     
     [self dismissViewControllerAnimated:YES completion: nil];
-}
-
-- (IBAction)unwindToList:(UIStoryboardSegue *)segue
-{
-    TaskListsPickerController *picker = [segue sourceViewController];
-    
-    TaskList *list = [picker.taskLists objectAtIndex:picker.selectedIndex];
-    
-    [self setTitle:list.title];
-    
-    [self.tableView reloadData];
 }
 
 @end

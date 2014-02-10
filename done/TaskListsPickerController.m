@@ -8,6 +8,7 @@
 
 #import "TaskListsPickerController.h"
 #import "TaskList.h"
+#import "TaskListsDataController.h"
 
 @interface TaskListsPickerController ()
 
@@ -34,8 +35,8 @@
 {
     [super viewDidLoad];
 
-    self.taskLists = [[NSMutableArray alloc] init];
-    [self loadTestData];
+    self.dataController = [TaskListsDataController sharedController];
+    self.selectedIndex = [self.dataController selectedTaskList];
 
 
     // Uncomment the following line to preserve selection between presentations.
@@ -45,28 +46,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void) loadTestData
-{
-    TaskList *item1 = [[TaskList alloc] init];
-    item1.title = @"Dapibus nisl in purus";
-    [self.taskLists addObject:item1];
-    
-    TaskList *item2 = [[TaskList alloc] init];
-    item2.title = @"Porta imperdiet";
-    [self.taskLists addObject:item2];
-    
-    TaskList *item3 = [[TaskList alloc] init];
-    item3.title = @"Ut facilisis tellus vitae";
-    [self.taskLists addObject:item3];
-    
-    TaskList *item4 = [[TaskList alloc] init];
-    item4.title = @"Vitae neque feugiat dictum";
-    [self.taskLists addObject:item4];
-    
-    TaskList *item5 = [[TaskList alloc] init];
-    item5.title = @"Mattis convallis magna";
-    [self.taskLists addObject:item5];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -85,7 +64,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.taskLists count];
+    return [self.dataController countOfTaskLists];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -94,7 +73,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    TaskList *item = [self.taskLists objectAtIndex:indexPath.row];
+    TaskList *item = [self.dataController objectInTaskListsAtIndex:indexPath.row];
     cell.textLabel.text = item.title;
     
     if (self.selectedIndex == indexPath.row)
@@ -130,7 +109,8 @@
         oldCell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    [self.delegate taskListPickerController:self didFinishPickingTaskList:[self.taskLists objectAtIndex:self.selectedIndex]];
+    [self.dataController setSelectedTaskList:self.selectedIndex];
+    [self.delegate taskListPickerController:self didFinishPickingTaskList:[self.dataController objectInTaskListsAtIndex:self.selectedIndex]];
 }
 
 /*
