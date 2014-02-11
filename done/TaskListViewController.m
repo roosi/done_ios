@@ -151,9 +151,10 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([[segue identifier] isEqualToString:@"SelectTaskList"])
-    {
-        TaskListsPickerController *destinationViewController = [segue destinationViewController];
-        destinationViewController.delegate = self;
+    {        
+        UINavigationController *navigationController = segue.destinationViewController;
+        TaskListsPickerController *pickerController = [navigationController viewControllers][0];
+        pickerController.delegate = self;
     }
     else if ([[segue identifier] isEqualToString:@"NewTask"])
     {
@@ -174,10 +175,11 @@
 
 -(void)taskListPickerController:(TaskListsPickerController *)picker didFinishPickingTaskList:(TaskList *)taskList
 {
-    [self setTitle:taskList.title];
-    
-    [self.tableView reloadData];
-    
+    if (taskList != nil) {
+        [self setTitle:taskList.title];
+        [self.tasksDataController setTaskList:taskList];
+        [self.tableView reloadData];
+    }
     [self dismissViewControllerAnimated:YES completion: nil];
 }
 

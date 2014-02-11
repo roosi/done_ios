@@ -46,6 +46,14 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (IBAction)cancelTapped:(id)sender {
+    [self.delegate taskListPickerController:self didFinishPickingTaskList:nil];
+}
+
+- (IBAction)doneTapped:(id)sender {
+    [self.dataController setSelectedTaskList:self.selectedIndex];
+    [self.delegate taskListPickerController:self didFinishPickingTaskList:[self.dataController objectInTaskListsAtIndex:self.selectedIndex]];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -108,9 +116,6 @@
     if (oldCell.accessoryType == UITableViewCellAccessoryCheckmark) {
         oldCell.accessoryType = UITableViewCellAccessoryNone;
     }
-    
-    [self.dataController setSelectedTaskList:self.selectedIndex];
-    [self.delegate taskListPickerController:self didFinishPickingTaskList:[self.dataController objectInTaskListsAtIndex:self.selectedIndex]];
 }
 
 /*
