@@ -44,19 +44,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void) loadTestData
-{
-    Task *item1 = [[Task alloc] init];
-    item1.title = @"Lorem ipsum";
-    item1.notes = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae fringilla lectus. Phasellus consectetur ultricies tellus, a luctus lectus tempor sit amet. Maecenas condimentum lobortis congue.";
-    [self.tasks addObject:item1];
-    
-    Task *item2 = [[Task alloc] init];
-    item2.title = @"Pellentesque elementum";
-    item2.notes = @"Cras pellentesque eleifend faucibus. Praesent euismod rutrum lorem non imperdiet. Etiam vel sapien arcu. In ullamcorper facilisis justo quis tincidunt.";
-    [self.tasks addObject:item2];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -142,6 +129,21 @@
         TaskListsPickerController *destinationViewController = [segue destinationViewController];
         destinationViewController.delegate = self;
     }
+    else if ([[segue identifier] isEqualToString:@"NewTask"])
+    {
+        Task *item = [[Task alloc] init];
+        [self.tasksDataController.tasks insertObject:item atIndex:0];
+        [self.tasksDataController setSelectedTask:0];
+        
+        [self.tableView reloadData];
+        
+    }
+    else if ([[segue identifier] isEqualToString:@"ShowTask"])
+    {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        [self.tasksDataController setSelectedTask:indexPath.row];
+    }
+    
 }
 
 -(void)taskListPickerController:(TaskListsPickerController *)picker didFinishPickingTaskList:(TaskList *)taskList

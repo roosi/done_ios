@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class TasksDataController;
+
 @interface TaskViewController : UIViewController
+
+@property (nonatomic,strong) TasksDataController *dataController;
 
 @end

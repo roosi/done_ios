@@ -7,8 +7,11 @@
 //
 
 #import "TaskViewController.h"
+#import "TasksDataController.h"
+#import "Task.h"
 
 @interface TaskViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 
 @end
 
@@ -27,6 +30,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.dataController = [TasksDataController sharedController];
+    Task* item = [self.dataController objectInTasksAtIndex:[self.dataController selectedTask]];
+    
+    self.titleTextField.text = item.title;
 }
 
 - (void)didReceiveMemoryWarning
