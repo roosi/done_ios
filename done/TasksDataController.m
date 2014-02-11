@@ -32,6 +32,13 @@ static TasksDataController *instance;
     return self;
 }
 
+-(void)setTaskList:(TaskList *)taskList
+{
+    if (_taskList != taskList) {
+        [self.tasks removeAllObjects];
+    }
+}
+
 -(void)setTasks:(NSMutableArray *)tasks
 {
     if (_tasks != tasks) {

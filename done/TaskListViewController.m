@@ -50,6 +50,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)deleteListTapped:(id)sender {
+    
+    if ([self.dataController countOfTaskLists] > 1) {
+        [self.dataController.taskLists removeObjectAtIndex:[self.dataController selectedTaskList]];
+    
+        [self.dataController setSelectedTaskList:0];
+        TaskList *list = [self.dataController objectInTaskListsAtIndex:0];
+        [self.tasksDataController setTaskList:list];
+        self.title = list.title;
+    
+        [self.tableView reloadData];
+    }
+}
+
+- (IBAction)createNewListTapped:(id)sender {
+    TaskList *list = [[TaskList alloc]init];
+    list.title = @"new list";
+    
+    [self.dataController.taskLists addObject:list];
+    [self.dataController setSelectedTaskList:[self.dataController countOfTaskLists] - 1];
+    [self.tasksDataController setTaskList:list];
+    self.title = list.title;
+    
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

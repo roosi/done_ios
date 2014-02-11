@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class Task;
+@class TaskList;
 
 @interface TasksDataController : NSObject
+@property (nonatomic,strong) TaskList* taskList;
+
 @property (nonatomic,copy) NSMutableArray *tasks;
 @property (nonatomic) NSUInteger selectedTask;
 
