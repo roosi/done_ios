@@ -11,6 +11,7 @@
 #import "Task.h"
 #import "TaskList.h"
 #import "TaskListsDataController.h"
+#import "TasksDataController.h"
 
 @interface TaskListViewController ()
 
@@ -32,11 +33,10 @@
     [super viewDidLoad];
     
     self.dataController = [TaskListsDataController sharedController];
+    self.tasksDataController = [TasksDataController sharedController];
+    
     self.title = [self.dataController objectInTaskListsAtIndex:[self.dataController selectedTaskList]].title;
     
-    self.tasks = [[NSMutableArray alloc] init];
-    [self loadTestData];
-
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -74,7 +74,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.tasks count];
+    return [self.tasksDataController countOfTasks];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -83,7 +83,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    Task *item = [self.tasks objectAtIndex:indexPath.row];
+    Task *item = [self.tasksDataController objectInTasksAtIndex:indexPath.row];
     cell.textLabel.text = item.title;
     cell.detailTextLabel.text = item.notes;
     

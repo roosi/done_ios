@@ -10,6 +10,7 @@
 #import "TaskListsPickerController.h"
 
 @class TaskListsDataController;
+@class TasksDataController;
 
 @interface TaskListViewController : UITableViewController <TaskListPickerControllerDelegate>
 
@@ -17,4 +18,5 @@
 
 @property (nonatomic,strong) TaskListsDataController *dataController;
 
+@property (nonatomic,strong) TasksDataController *tasksDataController;
 @end
