@@ -201,18 +201,28 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Delete" id="QH1-3d-SHz"/>
+                        <barButtonItem title="Delete" id="QH1-3d-SHz">
+                            <connections>
+                                <segue destination="Ce1-D2-ZYY" kind="unwind" unwindAction="unwindToList:" id="MyK-77-QG8"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="d6u-vE-Y8V"/>
-                        <barButtonItem title="Done" id="cXE-Nt-0cN"/>
+                        <barButtonItem title="Done" id="cXE-Nt-0cN">
+                            <connections>
+                                <action selector="finishTaskTapped:" destination="qxS-gA-kfE" id="XQE-5g-ZRm"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="edit task" id="0Gd-Rm-tJf">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="WLx-ib-Sze">
                             <connections>
+                                <action selector="saveTaskTapped:" destination="qxS-gA-kfE" id="K5T-TQ-Sqs"/>
                                 <segue destination="Ce1-D2-ZYY" kind="unwind" unwindAction="unwindToList:" id="Bbz-Ed-GaE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="QH1-3d-SHz" id="E8y-4A-qjP"/>
                         <outlet property="titleTextField" destination="AMo-h1-1XU" id="V4W-ld-Wat"/>
                     </connections>
                 </viewController>

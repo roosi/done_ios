@@ -183,4 +183,9 @@
     [self dismissViewControllerAnimated:YES completion: nil];
 }
 
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue
+{
+    [self.tableView reloadData];
+}
+
 @end

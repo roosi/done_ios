@@ -12,7 +12,9 @@
 
 @interface TaskViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *deleteButton;
 
+@property Task* task;
 @end
 
 @implementation TaskViewController
@@ -31,9 +33,16 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.dataController = [TasksDataController sharedController];
-    Task* item = [self.dataController objectInTasksAtIndex:[self.dataController selectedTask]];
+    self.task = [self.dataController objectInTasksAtIndex:[self.dataController selectedTask]];
     
-    self.titleTextField.text = item.title;
+    self.titleTextField.text = self.task.title;
+}
+
+- (IBAction)saveTaskTapped:(id)sender {
+}
+
+- (IBAction)finishTaskTapped:(id)sender {
+    self.task.completed = true;
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +53,9 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if (sender == self.deleteButton) {
+        [self.dataController.tasks removeObjectAtIndex:[self.dataController selectedTask]];
+    }
 }
 
 @end
