@@ -133,7 +133,7 @@
         <!--Task View Controller - edit task-->
         <scene sceneID="hz6-DI-rmU">
             <objects>
-                <viewController id="qxS-gA-kfE" customClass="TaskViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="qxS-gA-kfE" customClass="TaskViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SOd-PG-22r"/>
                         <viewControllerLayoutGuide type="bottom" id="PD3-UG-tCi"/>
@@ -142,27 +142,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AMo-h1-1XU">
-                                <rect key="frame" x="20" y="83" width="280" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vte-R2-r10">
-                                <rect key="frame" x="20" y="360" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4gf-ar-hbp">
-                                <rect key="frame" x="20" y="163" width="280" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="413584302.74243999">
-                                    <!--2014-02-08 20:31:42 +0000-->
-                                </date>
-                                <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <data key="data">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLt-vc-ASM">
+                                <rect key="frame" x="0.0" y="66" width="325" height="456"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AMo-h1-1XU">
+                                        <rect key="frame" x="25" y="19" width="280" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="BTn-aw-zhb"/>
+                                            <constraint firstAttribute="height" constant="34" id="WU1-mF-nbX"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="qxS-gA-kfE" id="Cyw-z3-4wj"/>
+                                        </connections>
+                                    </textField>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4gf-ar-hbp">
+                                        <rect key="frame" x="25" y="91" width="280" height="162"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="413584302.74243999">
+                                            <!--2014-02-08 20:31:42 +0000-->
+                                        </date>
+                                        <timeZone key="timeZone" name="America/Los_Angeles">
+                                            <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -181,23 +185,75 @@ AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
 </data>
-                                </timeZone>
-                            </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cW-Na-y47">
-                                <rect key="frame" x="20" y="125" width="99" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="12.2.2014">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                                        </timeZone>
+                                        <connections>
+                                            <action selector="dateChanged:" destination="qxS-gA-kfE" eventType="valueChanged" id="JtS-IV-Lvc"/>
+                                        </connections>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cW-Na-y47">
+                                        <rect key="frame" x="25" y="61" width="85" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="HY3-dp-iae"/>
+                                            <constraint firstAttribute="width" constant="85" id="gkf-ch-iXJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectDateTapped:" destination="qxS-gA-kfE" eventType="touchUpInside" id="lqG-0W-Yo4"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tSa-No-7yE">
+                                        <rect key="frame" x="25" y="298" width="280" height="147"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="147" id="Tkw-N4-d6f"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="qxS-gA-kfE" id="JFB-xe-L7S"/>
+                                        </connections>
+                                    </textView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2TD-PZ-1xn">
+                                        <rect key="frame" x="25" y="261" width="77" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="SfP-TM-ZYn"/>
+                                            <constraint firstAttribute="width" constant="77" id="ypd-pX-h3I"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="4gf-ar-hbp" firstAttribute="top" secondItem="3cW-Na-y47" secondAttribute="bottom" id="2AB-2u-CbU"/>
+                                    <constraint firstAttribute="trailing" secondItem="AMo-h1-1XU" secondAttribute="trailing" constant="20" symbolic="YES" id="8ZI-6k-LN9"/>
+                                    <constraint firstItem="tSa-No-7yE" firstAttribute="top" secondItem="2TD-PZ-1xn" secondAttribute="bottom" constant="16" id="Dq9-v3-VZh"/>
+                                    <constraint firstItem="AMo-h1-1XU" firstAttribute="leading" secondItem="JLt-vc-ASM" secondAttribute="leading" constant="25" id="Gf5-AQ-dDk"/>
+                                    <constraint firstAttribute="bottom" secondItem="tSa-No-7yE" secondAttribute="bottom" constant="11" id="P7L-Vg-w6W"/>
+                                    <constraint firstItem="4gf-ar-hbp" firstAttribute="leading" secondItem="2TD-PZ-1xn" secondAttribute="leading" id="T6f-lB-PFq"/>
+                                    <constraint firstItem="tSa-No-7yE" firstAttribute="trailing" secondItem="4gf-ar-hbp" secondAttribute="trailing" id="Vf2-Rp-AOJ"/>
+                                    <constraint firstItem="3cW-Na-y47" firstAttribute="leading" secondItem="AMo-h1-1XU" secondAttribute="leading" id="fjS-E6-jAz"/>
+                                    <constraint firstItem="3cW-Na-y47" firstAttribute="leading" secondItem="4gf-ar-hbp" secondAttribute="leading" id="iIo-2I-al5"/>
+                                    <constraint firstItem="tSa-No-7yE" firstAttribute="leading" secondItem="2TD-PZ-1xn" secondAttribute="leading" id="iWj-zu-dyK"/>
+                                    <constraint firstItem="3cW-Na-y47" firstAttribute="top" secondItem="AMo-h1-1XU" secondAttribute="bottom" constant="8" symbolic="YES" id="jLU-wU-3Ke"/>
+                                    <constraint firstItem="2TD-PZ-1xn" firstAttribute="top" secondItem="4gf-ar-hbp" secondAttribute="bottom" constant="8" symbolic="YES" id="jW5-yw-1nb"/>
+                                    <constraint firstItem="AMo-h1-1XU" firstAttribute="trailing" secondItem="4gf-ar-hbp" secondAttribute="trailing" id="ndP-ln-z4E"/>
+                                    <constraint firstItem="AMo-h1-1XU" firstAttribute="top" secondItem="JLt-vc-ASM" secondAttribute="top" constant="19" id="zTT-h1-MkB"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="AMo-h1-1XU" firstAttribute="leading" secondItem="FqJ-fh-XsV" secondAttribute="leading" constant="20" symbolic="YES" id="7gf-3G-k0R"/>
-                            <constraint firstAttribute="trailing" secondItem="AMo-h1-1XU" secondAttribute="trailing" constant="20" symbolic="YES" id="Fd3-U8-zKO"/>
-                            <constraint firstItem="AMo-h1-1XU" firstAttribute="top" secondItem="SOd-PG-22r" secondAttribute="bottom" constant="19" id="K2Y-GJ-i6A"/>
+                            <constraint firstItem="JLt-vc-ASM" firstAttribute="top" secondItem="SOd-PG-22r" secondAttribute="bottom" constant="2" id="6gu-ro-bnO"/>
+                            <constraint firstItem="JLt-vc-ASM" firstAttribute="leading" secondItem="FqJ-fh-XsV" secondAttribute="leading" id="Tyx-Kn-O0k"/>
+                            <constraint firstItem="PD3-UG-tCi" firstAttribute="top" secondItem="JLt-vc-ASM" secondAttribute="bottom" constant="2" id="rHV-iA-rcB"/>
+                            <constraint firstAttribute="trailing" secondItem="JLt-vc-ASM" secondAttribute="trailing" constant="-5" id="vY5-f6-apA"/>
                         </constraints>
                     </view>
                     <toolbarItems>
@@ -216,13 +272,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <navigationItem key="navigationItem" title="edit task" id="0Gd-Rm-tJf">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="WLx-ib-Sze">
                             <connections>
-                                <action selector="saveTaskTapped:" destination="qxS-gA-kfE" id="K5T-TQ-Sqs"/>
                                 <segue destination="Ce1-D2-ZYY" kind="unwind" unwindAction="unwindToList:" id="Bbz-Ed-GaE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateButton" destination="3cW-Na-y47" id="pWo-LX-1S5"/>
+                        <outlet property="datePicker" destination="4gf-ar-hbp" id="wCE-iU-ySd"/>
                         <outlet property="deleteButton" destination="QH1-3d-SHz" id="E8y-4A-qjP"/>
+                        <outlet property="notesTextView" destination="tSa-No-7yE" id="5nV-Wj-n6p"/>
+                        <outlet property="saveButton" destination="WLx-ib-Sze" id="yCD-ho-mix"/>
+                        <outlet property="scrollView" destination="JLt-vc-ASM" id="6jv-3t-u6Z"/>
                         <outlet property="titleTextField" destination="AMo-h1-1XU" id="V4W-ld-Wat"/>
                     </connections>
                 </viewController>

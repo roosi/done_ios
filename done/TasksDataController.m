@@ -50,11 +50,15 @@ static TasksDataController *instance;
 {
     Task *item1 = [[Task alloc] init];
     item1.title = @"Lorem ipsum";
+    item1.creationDate = [NSDate date];
+    item1.dueDate = item1.creationDate;
     item1.notes = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae fringilla lectus. Phasellus consectetur ultricies tellus, a luctus lectus tempor sit amet. Maecenas condimentum lobortis congue.";
     [self.tasks addObject:item1];
     
     Task *item2 = [[Task alloc] init];
     item2.title = @"Pellentesque elementum";
+    item2.creationDate = [NSDate date];
+    item2.dueDate = item1.creationDate;
     item2.notes = @"Cras pellentesque eleifend faucibus. Praesent euismod rutrum lorem non imperdiet. Etiam vel sapien arcu. In ullamcorper facilisis justo quis tincidunt.";
     [self.tasks addObject:item2];
     

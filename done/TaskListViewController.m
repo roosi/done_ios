@@ -159,6 +159,9 @@
     else if ([[segue identifier] isEqualToString:@"NewTask"])
     {
         Task *item = [[Task alloc] init];
+        item.creationDate = [NSDate date];
+        item.dueDate = item.creationDate;
+        
         [self.tasksDataController.tasks insertObject:item atIndex:0];
         [self.tasksDataController setSelectedTask:0];
         

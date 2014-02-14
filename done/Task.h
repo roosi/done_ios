@@ -12,7 +12,8 @@
 
 @property NSString *title;
 @property BOOL completed;
-@property (readonly) NSDate *creationDate;
+@property NSDate *creationDate;
+@property NSDate *dueDate;
 @property NSString *notes;
 
 @end
