@@ -9,6 +9,7 @@
 #import "TaskViewController.h"
 #import "TasksDataController.h"
 #import "Task.h"
+#import "TaskUtils.h"
 
 @interface TaskViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
@@ -52,32 +53,7 @@
     
     self.datePicker.date = self.task.dueDate;
 
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *now = [NSDate date];
-    NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:now];
-    
-    NSDate *today = [calendar dateFromComponents:components];
-    NSDateComponents *comp = [[NSDateComponents alloc] init];
-    [comp setDay:-1];
-    NSDate *yesterday = [calendar dateByAddingComponents:comp toDate:today options:0];
-    
-    if (self.task.completed == FALSE)
-    {
-        if([self.task.dueDate compare: today] == NSOrderedAscending) {
-        //if (info.DueDate.Ticks <= DateTime.Today.Ticks) {
-            [self.statusImageView setImage:[UIImage imageNamed:@"status_due"]];
-        }
-        else if([self.task.dueDate compare: yesterday] == NSOrderedAscending) {
-        //else if (info.DueDate.AddDays(-1).Ticks <= DateTime.Today.Ticks) {
-           [self.statusImageView setImage:[UIImage imageNamed:@"status_due_closing"]];
-        }
-        else {
-            [self.statusImageView setImage:[UIImage imageNamed:@"status_needs_action"]];
-        }
-    }
-    else {
-        [self.statusImageView setImage:[UIImage imageNamed:@"status_completed"]];
-    }
+    [self.statusImageView setImage: [TaskUtils getStatusImage:self.task]];
 }
 
 -(void)viewDidAppear:(BOOL)animated
