@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *statusImageView;
 
 @property Task *task;
 @property NSDateFormatter *dateFormatter;
@@ -50,7 +51,33 @@
     [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     
     self.datePicker.date = self.task.dueDate;
-    //self.dateButton.titleLabel.text = [self.dateFormatter stringFromDate:self.datePicker.date];
+
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *now = [NSDate date];
+    NSDateComponents *components = [calendar components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:now];
+    
+    NSDate *today = [calendar dateFromComponents:components];
+    NSDateComponents *comp = [[NSDateComponents alloc] init];
+    [comp setDay:-1];
+    NSDate *yesterday = [calendar dateByAddingComponents:comp toDate:today options:0];
+    
+    if (self.task.completed == FALSE)
+    {
+        if([self.task.dueDate compare: today] == NSOrderedAscending) {
+        //if (info.DueDate.Ticks <= DateTime.Today.Ticks) {
+            [self.statusImageView setImage:[UIImage imageNamed:@"status_due"]];
+        }
+        else if([self.task.dueDate compare: yesterday] == NSOrderedAscending) {
+        //else if (info.DueDate.AddDays(-1).Ticks <= DateTime.Today.Ticks) {
+           [self.statusImageView setImage:[UIImage imageNamed:@"status_due_closing"]];
+        }
+        else {
+            [self.statusImageView setImage:[UIImage imageNamed:@"status_needs_action"]];
+        }
+    }
+    else {
+        [self.statusImageView setImage:[UIImage imageNamed:@"status_completed"]];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated

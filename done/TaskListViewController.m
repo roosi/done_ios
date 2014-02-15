@@ -12,9 +12,10 @@
 #import "TaskList.h"
 #import "TaskListsDataController.h"
 #import "TasksDataController.h"
+#import "TaskUtils.h"
 
 @interface TaskListViewController ()
-
+@property NSDateFormatter *dateFormatter;
 @end
 
 @implementation TaskListViewController
@@ -31,6 +32,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     
     self.dataController = [TaskListsDataController sharedController];
     self.tasksDataController = [TasksDataController sharedController];
@@ -98,7 +103,8 @@
     // Configure the cell...
     Task *item = [self.tasksDataController objectInTasksAtIndex:indexPath.row];
     cell.textLabel.text = item.title;
-    cell.detailTextLabel.text = item.notes;
+    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:item.dueDate];
+    [cell.imageView setImage:[TaskUtils getStatusImage:item]];
     
     return cell;
 }
