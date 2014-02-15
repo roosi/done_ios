@@ -23,11 +23,15 @@
 		5F7FD5B818A6AA4700A8F5D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD5B718A6AA4700A8F5D1 /* Main.storyboard */; };
 		5F7FD5BC18A6B19300A8F5D1 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD5BB18A6B19300A8F5D1 /* Task.m */; };
 		5F7FD5BF18A7489E00A8F5D1 /* TaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD5BE18A7489E00A8F5D1 /* TaskList.m */; };
-		5F7FD5C318A7ED7D00A8F5D1 /* status_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD5C218A7ED7D00A8F5D1 /* status_default.png */; };
 		5F7FD60418A7EF1700A8F5D1 /* TaskListsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD60318A7EF1700A8F5D1 /* TaskListsPickerController.m */; };
 		5F7FD60718A7EF3100A8F5D1 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD60618A7EF3100A8F5D1 /* TaskViewController.m */; };
 		5F7FD60A18A93B1400A8F5D1 /* TaskListsDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD60918A93B1400A8F5D1 /* TaskListsDataController.m */; };
 		5F7FD60D18AA729D00A8F5D1 /* TasksDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD60C18AA729D00A8F5D1 /* TasksDataController.m */; };
+		5F7FD61118AE918300A8F5D1 /* status_due_closing.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD60E18AE918300A8F5D1 /* status_due_closing.png */; };
+		5F7FD61218AE918300A8F5D1 /* status_due.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD60F18AE918300A8F5D1 /* status_due.png */; };
+		5F7FD61318AE918300A8F5D1 /* status_needs_action.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD61018AE918300A8F5D1 /* status_needs_action.png */; };
+		5F7FD61518AE919A00A8F5D1 /* status_completed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD61418AE919A00A8F5D1 /* status_completed.png */; };
+		5F7FD61918AF632C00A8F5D1 /* TaskUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD61818AF632C00A8F5D1 /* TaskUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +68,6 @@
 		5F7FD5BB18A6B19300A8F5D1 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		5F7FD5BD18A7489E00A8F5D1 /* TaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskList.h; sourceTree = "<group>"; };
 		5F7FD5BE18A7489E00A8F5D1 /* TaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskList.m; sourceTree = "<group>"; };
-		5F7FD5C218A7ED7D00A8F5D1 /* status_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_default.png; path = ../../../Documents/status_default.png; sourceTree = "<group>"; };
 		5F7FD60218A7EF1700A8F5D1 /* TaskListsPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListsPickerController.h; sourceTree = "<group>"; };
 		5F7FD60318A7EF1700A8F5D1 /* TaskListsPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListsPickerController.m; sourceTree = "<group>"; };
 		5F7FD60518A7EF3100A8F5D1 /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
@@ -73,6 +76,12 @@
 		5F7FD60918A93B1400A8F5D1 /* TaskListsDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListsDataController.m; sourceTree = "<group>"; };
 		5F7FD60B18AA729D00A8F5D1 /* TasksDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TasksDataController.h; sourceTree = "<group>"; };
 		5F7FD60C18AA729D00A8F5D1 /* TasksDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TasksDataController.m; sourceTree = "<group>"; };
+		5F7FD60E18AE918300A8F5D1 /* status_due_closing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_due_closing.png; path = ../../../Documents/status_due_closing.png; sourceTree = "<group>"; };
+		5F7FD60F18AE918300A8F5D1 /* status_due.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_due.png; path = ../../../Documents/status_due.png; sourceTree = "<group>"; };
+		5F7FD61018AE918300A8F5D1 /* status_needs_action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_needs_action.png; path = ../../../Documents/status_needs_action.png; sourceTree = "<group>"; };
+		5F7FD61418AE919A00A8F5D1 /* status_completed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = status_completed.png; path = ../../../Documents/status_completed.png; sourceTree = "<group>"; };
+		5F7FD61718AF632C00A8F5D1 /* TaskUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskUtils.h; sourceTree = "<group>"; };
+		5F7FD61818AF632C00A8F5D1 /* TaskUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +141,7 @@
 		5F7FD57718A3ECD300A8F5D1 /* done */ = {
 			isa = PBXGroup;
 			children = (
+				5F7FD61618AF62F700A8F5D1 /* Utils */,
 				5F7FD5B718A6AA4700A8F5D1 /* Main.storyboard */,
 				5F7FD5B918A6B15F00A8F5D1 /* Model */,
 				5F7FD5AE18A698CA00A8F5D1 /* TaskListViewController.h */,
@@ -151,7 +161,10 @@
 		5F7FD57818A3ECD300A8F5D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5F7FD5C218A7ED7D00A8F5D1 /* status_default.png */,
+				5F7FD61418AE919A00A8F5D1 /* status_completed.png */,
+				5F7FD60E18AE918300A8F5D1 /* status_due_closing.png */,
+				5F7FD60F18AE918300A8F5D1 /* status_due.png */,
+				5F7FD61018AE918300A8F5D1 /* status_needs_action.png */,
 				5F7FD57918A3ECD300A8F5D1 /* done-Info.plist */,
 				5F7FD57A18A3ECD300A8F5D1 /* InfoPlist.strings */,
 				5F7FD57D18A3ECD300A8F5D1 /* main.m */,
@@ -191,6 +204,15 @@
 				5F7FD60C18AA729D00A8F5D1 /* TasksDataController.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		5F7FD61618AF62F700A8F5D1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5F7FD61718AF632C00A8F5D1 /* TaskUtils.h */,
+				5F7FD61818AF632C00A8F5D1 /* TaskUtils.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,10 +291,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F7FD61118AE918300A8F5D1 /* status_due_closing.png in Resources */,
 				5F7FD5B818A6AA4700A8F5D1 /* Main.storyboard in Resources */,
-				5F7FD5C318A7ED7D00A8F5D1 /* status_default.png in Resources */,
+				5F7FD61218AE918300A8F5D1 /* status_due.png in Resources */,
 				5F7FD58D18A3ECD300A8F5D1 /* Images.xcassets in Resources */,
+				5F7FD61318AE918300A8F5D1 /* status_needs_action.png in Resources */,
 				5F7FD57C18A3ECD300A8F5D1 /* InfoPlist.strings in Resources */,
+				5F7FD61518AE919A00A8F5D1 /* status_completed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +322,7 @@
 				5F7FD5BF18A7489E00A8F5D1 /* TaskList.m in Sources */,
 				5F7FD60A18A93B1400A8F5D1 /* TaskListsDataController.m in Sources */,
 				5F7FD60718A7EF3100A8F5D1 /* TaskViewController.m in Sources */,
+				5F7FD61918AF632C00A8F5D1 /* TaskUtils.m in Sources */,
 				5F7FD57E18A3ECD300A8F5D1 /* main.m in Sources */,
 				5F7FD60D18AA729D00A8F5D1 /* TasksDataController.m in Sources */,
 				5F7FD5BC18A6B19300A8F5D1 /* Task.m in Sources */,
