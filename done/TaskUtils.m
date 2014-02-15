@@ -19,8 +19,8 @@
     
     NSDate *today = [calendar dateFromComponents:components];
     NSDateComponents *comp = [[NSDateComponents alloc] init];
-    [comp setDay:-1];
-    NSDate *yesterday = [calendar dateByAddingComponents:comp toDate:today options:0];
+    [comp setDay:1];
+    NSDate *tommorrow = [calendar dateByAddingComponents:comp toDate:today options:0];
     
     if (task.completed == FALSE)
     {
@@ -28,7 +28,7 @@
             //if (info.DueDate.Ticks <= DateTime.Today.Ticks) {
             return [UIImage imageNamed:@"status_due"];
         }
-        else if([task.dueDate compare: yesterday] == NSOrderedAscending) {
+        else if([task.dueDate compare: tommorrow] == NSOrderedAscending) {
             //else if (info.DueDate.AddDays(-1).Ticks <= DateTime.Today.Ticks) {
             return [UIImage imageNamed:@"status_due_closing"];
         }

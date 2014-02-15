@@ -97,7 +97,9 @@
 }
 
 - (IBAction)dateChanged:(id)sender {
+    [self.task setDueDate:self.datePicker.date];
     [self setDateButtonText];
+    [self.statusImageView setImage: [TaskUtils getStatusImage:self.task]];
 }
 
 -(void) setDateButtonText
@@ -110,6 +112,7 @@
 
 - (IBAction)finishTaskTapped:(id)sender {
     self.task.completed = true;
+    [self.statusImageView setImage: [TaskUtils getStatusImage:self.task]];
 }
 
 - (void)didReceiveMemoryWarning
