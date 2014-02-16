@@ -14,11 +14,21 @@
 #import "TasksDataController.h"
 #import "TaskUtils.h"
 
+#import "GTMOAuth2ViewControllerTouch.h"
+
 @interface TaskListViewController ()
 @property NSDateFormatter *dateFormatter;
+@property GTMOAuth2Authentication *auth;
 @end
 
 @implementation TaskListViewController
+
+static NSString *const kKeychainItemName = @"doneToken";
+
+NSString *kClientID = @"552948890600.apps.googleusercontent.com";     // pre-assigned by service
+NSString *kClientSecret = @"H_AA4PQQvKtmcHYubTd5SEHi"; // pre-assigned by service
+
+NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+ API
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -37,16 +47,73 @@
     [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
     [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     
-    self.dataController = [TaskListsDataController sharedController];
-    self.tasksDataController = [TasksDataController sharedController];
-    
-    self.title = [self.dataController objectInTaskListsAtIndex:[self.dataController selectedTaskList]].title;
+    self.title = @"";
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.auth = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
+                                                              clientID:kClientID
+                                                          clientSecret:kClientSecret];
+    
+    if (self.auth.canAuthorize == NO) {
+        [self signIn];
+    }
+    else {
+        [self updateUI];
+    }
+}
+
+-(void)signIn
+{
+    GTMOAuth2ViewControllerTouch *viewController;
+    viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithScope:scope
+                                                                clientID:kClientID
+                                                            clientSecret:kClientSecret
+                                                        keychainItemName:kKeychainItemName
+                                                                delegate:self
+                                                        finishedSelector:@selector(viewController:finishedWithAuth:error:)];
+    
+    //[[self navigationController] pushViewController:viewController animated:YES];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+-(void)signOut
+{
+    [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:kKeychainItemName];
+    
+    [GTMOAuth2ViewControllerTouch revokeTokenForGoogleAuthentication:self.auth];
+}
+
+- (void)viewController:(GTMOAuth2ViewControllerTouch *)viewController
+      finishedWithAuth:(GTMOAuth2Authentication *)auth
+      error:(NSError *)error {
+    
+    [self.parentViewController dismissViewControllerAnimated:NO completion:nil];
+    [viewController removeFromParentViewController];
+    
+    if (error != nil) {
+        // Authentication failed
+        [self signIn];
+    }
+    else {
+        // Authentication succeeded
+        self.auth = auth;
+        //self.tasksService.authorizer = auth;
+        
+        [self updateUI];
+    }
+}
+
+-(void)updateUI
+{
+    self.dataController = [TaskListsDataController sharedController];
+    self.tasksDataController = [TasksDataController sharedController];
+    
+    self.title = [self.dataController objectInTaskListsAtIndex:[self.dataController selectedTaskList]].title;
 }
 
 - (void)didReceiveMemoryWarning
