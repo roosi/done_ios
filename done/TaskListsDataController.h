@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class TaskList;
+@class GTLTasksTaskList;
+@class GTMOAuth2Authentication;
 
 @interface TaskListsDataController : NSObject
 @property (nonatomic, copy) NSMutableArray *taskLists;
 @property (nonatomic) NSUInteger selectedTaskList;
+@property (nonatomic) GTMOAuth2Authentication *auth;
 
 +(TaskListsDataController *) sharedController;
 
 -(NSUInteger) countOfTaskLists;
--(TaskList *) objectInTaskListsAtIndex:(NSUInteger)index;
+-(GTLTasksTaskList *) objectInTaskListsAtIndex:(NSUInteger)index;
 @end

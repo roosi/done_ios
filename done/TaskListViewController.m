@@ -9,12 +9,15 @@
 #import "TaskListViewController.h"
 #import "TaskListsPickerController.h"
 #import "Task.h"
-#import "TaskList.h"
 #import "TaskListsDataController.h"
 #import "TasksDataController.h"
 #import "TaskUtils.h"
 
 #import "GTMOAuth2ViewControllerTouch.h"
+#import "GTLServiceTasks.h"
+#import "GTLQueryTasks.h"
+#import "GTLTasksTaskLists.h"
+#import "GTLTasksTaskList.h"
 
 @interface TaskListViewController ()
 @property NSDateFormatter *dateFormatter;
@@ -63,7 +66,7 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
         [self signIn];
     }
     else {
-        [self updateUI];
+        [self setAuth];
     }
 }
 
@@ -102,17 +105,32 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     else {
         // Authentication succeeded
         self.auth = auth;
-        //self.tasksService.authorizer = auth;
+    }
+}
+
+-(void)setAuth
+{
+    self.dataController = [TaskListsDataController sharedController];
+    self.tasksDataController = [TasksDataController sharedController];
+    [self.dataController setAuth:self.auth];
+    
+    [self.dataController addObserver:self forKeyPath:@"taskLists" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:nil];
+    [self.dataController addObserver:self forKeyPath:@"selectedTaskList" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:nil];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"taskLists"]) {
         
+    }
+    else if ([keyPath isEqualToString:@"selectedTaskList"])
+    {
         [self updateUI];
     }
 }
 
 -(void)updateUI
 {
-    self.dataController = [TaskListsDataController sharedController];
-    self.tasksDataController = [TasksDataController sharedController];
-    
     self.title = [self.dataController objectInTaskListsAtIndex:[self.dataController selectedTaskList]].title;
 }
 
@@ -128,7 +146,7 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
         [self.dataController.taskLists removeObjectAtIndex:[self.dataController selectedTaskList]];
     
         [self.dataController setSelectedTaskList:0];
-        TaskList *list = [self.dataController objectInTaskListsAtIndex:0];
+        GTLTasksTaskList *list = [self.dataController objectInTaskListsAtIndex:0];
         [self.tasksDataController setTaskList:list];
         self.title = list.title;
     
@@ -137,7 +155,7 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
 }
 
 - (IBAction)createNewListTapped:(id)sender {
-    TaskList *list = [[TaskList alloc]init];
+    GTLTasksTaskList *list = [[GTLTasksTaskList alloc]init];
     list.title = @"new list";
     
     [self.dataController.taskLists addObject:list];
@@ -249,7 +267,7 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     
 }
 
--(void)taskListPickerController:(TaskListsPickerController *)picker didFinishPickingTaskList:(TaskList *)taskList
+-(void)taskListPickerController:(TaskListsPickerController *)picker didFinishPickingTaskList:(GTLTasksTaskList *)taskList
 {
     if (taskList != nil) {
         [self setTitle:taskList.title];

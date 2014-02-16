@@ -7,8 +7,9 @@
 //
 
 #import "TaskListsPickerController.h"
-#import "TaskList.h"
 #import "TaskListsDataController.h"
+
+#import "GTLTasksTaskList.h"
 
 @interface TaskListsPickerController ()
 
@@ -81,7 +82,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    TaskList *item = [self.dataController objectInTaskListsAtIndex:indexPath.row];
+    GTLTasksTaskList *item = [self.dataController objectInTaskListsAtIndex:indexPath.row];
     cell.textLabel.text = item.title;
     
     if (self.selectedIndex == indexPath.row)

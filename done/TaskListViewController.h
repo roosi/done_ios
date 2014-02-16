@@ -14,8 +14,6 @@
 
 @interface TaskListViewController : UITableViewController <TaskListPickerControllerDelegate>
 
-@property NSMutableArray *tasks;
-
 @property (nonatomic,strong) TaskListsDataController *dataController;
 
 @property (nonatomic,strong) TasksDataController *tasksDataController;

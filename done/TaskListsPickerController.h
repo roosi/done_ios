@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class TaskList;
 @class TaskListsDataController;
+@class GTLTasksTaskList;
 
 @protocol TaskListPickerControllerDelegate;
 
@@ -28,5 +28,5 @@
 // The picker does not dismiss itself; the client dismisses it in these callbacks.
 // The delegate will receive one or the other, but not both, depending whether the user
 // confirms or cancels.
-- (void)taskListPickerController:(TaskListsPickerController *)picker didFinishPickingTaskList:(TaskList *)taskList;
+- (void)taskListPickerController:(TaskListsPickerController *)picker didFinishPickingTaskList:(GTLTasksTaskList *)taskList;
 @end

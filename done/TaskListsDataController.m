@@ -7,7 +7,16 @@
 //
 
 #import "TaskListsDataController.h"
-#import "TaskList.h"
+
+#import "GTMOAuth2ViewControllerTouch.h"
+#import "GTLServiceTasks.h"
+#import "GTLQueryTasks.h"
+#import "GTLTasksTaskLists.h"
+#import "GTLTasksTaskList.h"
+
+@interface TaskListsDataController()
+@property GTLServiceTasks *service;
+@end
 
 @implementation TaskListsDataController
 
@@ -24,9 +33,11 @@ static TaskListsDataController *instance;
 -(id)init
 {
     if (self = [super init]) {
+        self.service = [[GTLServiceTasks alloc] init];
+        
         self.taskLists = [[NSMutableArray alloc] init];
         
-        [self loadTestData];
+        //[self loadTestData];
         
         return self;
     }
@@ -41,25 +52,57 @@ static TaskListsDataController *instance;
     }
 }
 
+-(void)setAuth:(GTMOAuth2Authentication *)auth
+{
+    if (_auth != auth) {
+        _auth = auth;
+
+        self.service.authorizer = self.auth;
+        
+        [self willChangeValueForKey:@"taskLists"];
+        [self.taskLists removeAllObjects];
+        [self didChangeValueForKey:@"taskLists"];
+        
+        GTLQueryTasks *query = [GTLQueryTasks queryForTasklistsList];
+        
+        GTLServiceTicket *taskListsTicket = [self.service executeQuery:query
+                                                    completionHandler:^(GTLServiceTicket *ticket,
+                                                                    id taskLists, NSError *error) {
+                                                    // callback
+                                                    if (error == nil) {
+                                                        GTLTasksTaskLists *lists = taskLists;
+                                                        for(GTLTasksTaskList *list in lists)
+                                                        {
+                                                            [self insertObject:list inTaskListsAtIndex:[self countOfTaskLists]];
+                                                        }
+                                                        self.selectedTaskList = 0;
+                                                    }
+                                                    else {
+                                                        // error
+                                                    }
+                                                }];
+    }
+}
+
 - (void) loadTestData
 {
-    TaskList *item1 = [[TaskList alloc] init];
+    GTLTasksTaskList *item1 = [[GTLTasksTaskList alloc] init];
     item1.title = @"Dapibus nisl in purus";
     [self.taskLists addObject:item1];
     
-    TaskList *item2 = [[TaskList alloc] init];
+    GTLTasksTaskList *item2 = [[GTLTasksTaskList alloc] init];
     item2.title = @"Porta imperdiet";
     [self.taskLists addObject:item2];
     
-    TaskList *item3 = [[TaskList alloc] init];
+    GTLTasksTaskList *item3 = [[GTLTasksTaskList alloc] init];
     item3.title = @"Ut facilisis tellus vitae";
     [self.taskLists addObject:item3];
     
-    TaskList *item4 = [[TaskList alloc] init];
+    GTLTasksTaskList *item4 = [[GTLTasksTaskList alloc] init];
     item4.title = @"Vitae neque feugiat dictum";
     [self.taskLists addObject:item4];
     
-    TaskList *item5 = [[TaskList alloc] init];
+    GTLTasksTaskList *item5 = [[GTLTasksTaskList alloc] init];
     item5.title = @"Mattis convallis magna";
     [self.taskLists addObject:item5];
     
@@ -71,9 +114,20 @@ static TaskListsDataController *instance;
     return [self.taskLists count];
 }
 
--(TaskList*)objectInTaskListsAtIndex:(NSUInteger)index
+-(GTLTasksTaskList*)objectInTaskListsAtIndex:(NSUInteger)index
 {
     return [self.taskLists objectAtIndex:index];
+}
+
+//KVC
+-(void)insertObject:(GTLTasksTaskList *)object inTaskListsAtIndex:(NSUInteger)index
+{
+    [self.taskLists insertObject:object atIndex:index];
+}
+
+-(void)removeObjectFromTaskListsAtIndex:(NSUInteger)index
+{
+    [self.taskLists removeObjectAtIndex:index];
 }
 
 @end
