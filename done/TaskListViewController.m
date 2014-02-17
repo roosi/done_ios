@@ -8,7 +8,6 @@
 
 #import "TaskListViewController.h"
 #import "TaskListsPickerController.h"
-#import "Task.h"
 #import "TaskListsDataController.h"
 #import "TasksDataController.h"
 #import "TaskUtils.h"
@@ -18,6 +17,7 @@
 #import "GTLQueryTasks.h"
 #import "GTLTasksTaskLists.h"
 #import "GTLTasksTaskList.h"
+#import "GTLTasksTask.h"
 
 @interface TaskListViewController ()
 @property NSDateFormatter *dateFormatter;
@@ -113,9 +113,11 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     self.dataController = [TaskListsDataController sharedController];
     self.tasksDataController = [TasksDataController sharedController];
     [self.dataController setAuth:self.auth];
+    [self.tasksDataController setAuth:self.auth];
     
     [self.dataController addObserver:self forKeyPath:@"taskLists" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:nil];
     [self.dataController addObserver:self forKeyPath:@"selectedTaskList" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:nil];
+    [self.tasksDataController addObserver:self forKeyPath:@"tasks" options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:nil];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -127,11 +129,17 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     {
         [self updateUI];
     }
+    else if ([keyPath isEqualToString:@"tasks"])
+    {
+        [self.tableView reloadData];
+    }
 }
 
 -(void)updateUI
 {
-    self.title = [self.dataController objectInTaskListsAtIndex:[self.dataController selectedTaskList]].title;
+    GTLTasksTaskList *list = [self.dataController objectInTaskListsAtIndex:[self.dataController selectedTaskList]];
+    self.title = list.title;
+    [self.tasksDataController setTaskList:list];
 }
 
 - (void)didReceiveMemoryWarning
@@ -186,9 +194,9 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    Task *item = [self.tasksDataController objectInTasksAtIndex:indexPath.row];
+    GTLTasksTask *item = [self.tasksDataController objectInTasksAtIndex:indexPath.row];
     cell.textLabel.text = item.title;
-    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:item.dueDate];
+    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:item.due.date];
     [cell.imageView setImage:[TaskUtils getStatusImage:item]];
     
     return cell;
@@ -249,9 +257,11 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     }
     else if ([[segue identifier] isEqualToString:@"NewTask"])
     {
-        Task *item = [[Task alloc] init];
-        item.creationDate = [NSDate date];
-        item.dueDate = item.creationDate;
+        GTLTasksTask *item = [[GTLTasksTask alloc] init];
+        
+        //TODO
+        //item.creationDate = [NSDate date];
+        //item.dueDate = item.creationDate;
         
         [self.tasksDataController.tasks insertObject:item atIndex:0];
         [self.tasksDataController setSelectedTask:0];

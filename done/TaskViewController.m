@@ -8,8 +8,9 @@
 
 #import "TaskViewController.h"
 #import "TasksDataController.h"
-#import "Task.h"
 #import "TaskUtils.h"
+
+#import "GTLTasksTask.h"
 
 @interface TaskViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
@@ -21,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *statusImageView;
 
-@property Task *task;
+@property GTLTasksTask *task;
 @property NSDateFormatter *dateFormatter;
 @end
 
@@ -51,7 +52,7 @@
     [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
     [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     
-    self.datePicker.date = self.task.dueDate;
+    self.datePicker.date = self.task.due.date;
 
     [self.statusImageView setImage: [TaskUtils getStatusImage:self.task]];
 }
@@ -97,7 +98,8 @@
 }
 
 - (IBAction)dateChanged:(id)sender {
-    [self.task setDueDate:self.datePicker.date];
+    //TODO
+    //[self.task setDueDate:self.datePicker.date];
     [self setDateButtonText];
     [self.statusImageView setImage: [TaskUtils getStatusImage:self.task]];
 }
@@ -111,7 +113,7 @@
 }
 
 - (IBAction)finishTaskTapped:(id)sender {
-    self.task.completed = true;
+    self.task.status = kTaskStatusCompleted;
     [self.statusImageView setImage: [TaskUtils getStatusImage:self.task]];
 }
 
@@ -129,7 +131,9 @@
     else if (sender == self.saveButton) {
         self.task.title = self.titleTextField.text;
         self.task.notes = self.notesTextView.text;
-        self.task.dueDate = self.datePicker.date;
+        
+        //TODO
+        //self.task.due.date = self.datePicker.date;
     }
 }
 

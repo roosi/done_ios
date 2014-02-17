@@ -9,16 +9,20 @@
 #import <Foundation/Foundation.h>
 
 @class Task;
-@class TaskList;
+@class GTMOAuth2Authentication;
+@class GTLTasksTaskList;
+@class GTLTasksTask;
 
 @interface TasksDataController : NSObject
-@property (nonatomic,strong) TaskList* taskList;
+@property (nonatomic,strong) GTLTasksTaskList* taskList;
 
 @property (nonatomic,copy) NSMutableArray *tasks;
 @property (nonatomic) NSUInteger selectedTask;
 
+@property (nonatomic) GTMOAuth2Authentication *auth;
+
 +(TasksDataController *) sharedController;
 
 -(NSUInteger)countOfTasks;
--(Task *) objectInTasksAtIndex:(NSUInteger)index;
+-(GTLTasksTask *) objectInTasksAtIndex:(NSUInteger)index;
 @end

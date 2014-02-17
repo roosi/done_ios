@@ -21,8 +21,6 @@
 		5F7FD5A018A3ECD300A8F5D1 /* doneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD59F18A3ECD300A8F5D1 /* doneTests.m */; };
 		5F7FD5B018A698CA00A8F5D1 /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD5AF18A698CA00A8F5D1 /* TaskListViewController.m */; };
 		5F7FD5B818A6AA4700A8F5D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FD5B718A6AA4700A8F5D1 /* Main.storyboard */; };
-		5F7FD5BC18A6B19300A8F5D1 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD5BB18A6B19300A8F5D1 /* Task.m */; };
-		5F7FD5BF18A7489E00A8F5D1 /* TaskList.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD5BE18A7489E00A8F5D1 /* TaskList.m */; };
 		5F7FD60418A7EF1700A8F5D1 /* TaskListsPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD60318A7EF1700A8F5D1 /* TaskListsPickerController.m */; };
 		5F7FD60718A7EF3100A8F5D1 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD60618A7EF3100A8F5D1 /* TaskViewController.m */; };
 		5F7FD60A18A93B1400A8F5D1 /* TaskListsDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FD60918A93B1400A8F5D1 /* TaskListsDataController.m */; };
@@ -103,10 +101,6 @@
 		5F7FD5AE18A698CA00A8F5D1 /* TaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListViewController.h; sourceTree = "<group>"; };
 		5F7FD5AF18A698CA00A8F5D1 /* TaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListViewController.m; sourceTree = "<group>"; };
 		5F7FD5B718A6AA4700A8F5D1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		5F7FD5BA18A6B19300A8F5D1 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
-		5F7FD5BB18A6B19300A8F5D1 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
-		5F7FD5BD18A7489E00A8F5D1 /* TaskList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskList.h; sourceTree = "<group>"; };
-		5F7FD5BE18A7489E00A8F5D1 /* TaskList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskList.m; sourceTree = "<group>"; };
 		5F7FD60218A7EF1700A8F5D1 /* TaskListsPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListsPickerController.h; sourceTree = "<group>"; };
 		5F7FD60318A7EF1700A8F5D1 /* TaskListsPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListsPickerController.m; sourceTree = "<group>"; };
 		5F7FD60518A7EF3100A8F5D1 /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
@@ -255,10 +249,6 @@
 		5F7FD5B918A6B15F00A8F5D1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5F7FD5BA18A6B19300A8F5D1 /* Task.h */,
-				5F7FD5BB18A6B19300A8F5D1 /* Task.m */,
-				5F7FD5BD18A7489E00A8F5D1 /* TaskList.h */,
-				5F7FD5BE18A7489E00A8F5D1 /* TaskList.m */,
 				5F7FD60818A93B1400A8F5D1 /* TaskListsDataController.h */,
 				5F7FD60918A93B1400A8F5D1 /* TaskListsDataController.m */,
 				5F7FD60B18AA729D00A8F5D1 /* TasksDataController.h */,
@@ -491,7 +481,6 @@
 				5F7FDE9718AFCD1B00A8F5D1 /* GTLServiceTasks.m in Sources */,
 				5F7FD60418A7EF1700A8F5D1 /* TaskListsPickerController.m in Sources */,
 				5F7FDE9918AFCD1B00A8F5D1 /* GTLTasksConstants.m in Sources */,
-				5F7FD5BF18A7489E00A8F5D1 /* TaskList.m in Sources */,
 				5F7FDE9A18AFCD1B00A8F5D1 /* GTLTasksTask.m in Sources */,
 				5F7FDE9C18AFCD1B00A8F5D1 /* GTLTasksTaskLists.m in Sources */,
 				5F7FD60A18A93B1400A8F5D1 /* TaskListsDataController.m in Sources */,
@@ -502,7 +491,6 @@
 				5F7FDE9618AFCD1B00A8F5D1 /* GTLQueryTasks.m in Sources */,
 				5F7FD57E18A3ECD300A8F5D1 /* main.m in Sources */,
 				5F7FD60D18AA729D00A8F5D1 /* TasksDataController.m in Sources */,
-				5F7FD5BC18A6B19300A8F5D1 /* Task.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
