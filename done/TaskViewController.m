@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *statusImageView;
 
 @property GTLTasksTask *task;
+@property GTLTasksTask *editedTask;
 @property NSDateFormatter *dateFormatter;
 @end
 
@@ -44,6 +45,7 @@
 
     self.dataController = [TasksDataController sharedController];
     self.task = [self.dataController objectInTasksAtIndex:[self.dataController selectedTask]];
+    self.editedTask = [self.task copy];
     
     self.titleTextField.text = self.task.title;
     self.notesTextView.text = self.task.notes;
@@ -98,10 +100,9 @@
 }
 
 - (IBAction)dateChanged:(id)sender {
-    //TODO
-    //[self.task setDueDate:self.datePicker.date];
+    self.editedTask.due = [GTLDateTime dateTimeForAllDayWithDate: self.datePicker.date];
     [self setDateButtonText];
-    [self.statusImageView setImage: [TaskUtils getStatusImage:self.task]];
+    [self.statusImageView setImage: [TaskUtils getStatusImage:self.editedTask]];
 }
 
 -(void) setDateButtonText
@@ -109,12 +110,11 @@
     [self.dateButton setTitle:[self.dateFormatter stringFromDate:self.datePicker.date] forState:UIControlStateNormal];
     [self.dateButton setTitle:[self.dateFormatter stringFromDate:self.datePicker.date] forState:UIControlStateSelected];
     [self.dateButton setTitle:[self.dateFormatter stringFromDate:self.datePicker.date] forState:UIControlStateHighlighted];
-    //self.dateButton.titleLabel.text = [self.dateFormatter stringFromDate:self.datePicker.date];
 }
 
 - (IBAction)finishTaskTapped:(id)sender {
-    self.task.status = kTaskStatusCompleted;
-    [self.statusImageView setImage: [TaskUtils getStatusImage:self.task]];
+    self.editedTask.status = kTaskStatusCompleted;
+    [self.statusImageView setImage: [TaskUtils getStatusImage:self.editedTask]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,11 +129,11 @@
         [self.dataController.tasks removeObjectAtIndex:[self.dataController selectedTask]];
     }
     else if (sender == self.saveButton) {
-        self.task.title = self.titleTextField.text;
-        self.task.notes = self.notesTextView.text;
+        self.editedTask.title = self.titleTextField.text;
+        self.editedTask.notes = self.notesTextView.text;
+        self.editedTask.due = [GTLDateTime dateTimeWithDate:self.datePicker.date timeZone:[NSTimeZone defaultTimeZone]];
         
-        //TODO
-        //self.task.due.date = self.datePicker.date;
+        [self.dataController patchSelectedTask:self.editedTask];
     }
 }
 

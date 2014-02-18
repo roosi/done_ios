@@ -258,11 +258,8 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     else if ([[segue identifier] isEqualToString:@"NewTask"])
     {
         GTLTasksTask *item = [[GTLTasksTask alloc] init];
-        
-        //TODO
-        //item.creationDate = [NSDate date];
-        //item.dueDate = item.creationDate;
-        
+        item.due = [GTLDateTime dateTimeForAllDayWithDate:[NSDate date]];
+
         [self.tasksDataController.tasks insertObject:item atIndex:0];
         [self.tasksDataController setSelectedTask:0];
         
@@ -290,6 +287,15 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue
 {
     [self.tableView reloadData];
+}
+
+- (IBAction)showInfo:(id)sender {
+    UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"done"
+                                                       message:@"powered by Google"
+                                                      delegate:self
+                                             cancelButtonTitle:@"OK"
+                                             otherButtonTitles:nil];
+    [aboutAlert show];
 }
 
 @end

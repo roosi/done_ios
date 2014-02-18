@@ -88,6 +88,35 @@ static TasksDataController *instance;
     }
 }
 
+-(void)patchSelectedTask:(GTLTasksTask *)patch
+{    
+    GTLTasksTask *task = [self.tasks objectAtIndex:self.selectedTask];
+
+    GTLQueryTasks *query = [GTLQueryTasks queryForTasksPatchWithObject:patch
+                                                              tasklist:self.taskList.identifier
+                                                                  task:task.identifier];
+
+    GTLServiceTicket *ticket = [self.service executeQuery:query
+                              completionHandler:^(GTLServiceTicket *ticket,
+                                                  id item, NSError *error) {
+                                  // callback
+                                  GTLTasksTask *task = item;
+                                  if (error == nil) {
+                                      [self willChangeValueForKey:@"tasks"];
+                                      [self.tasks replaceObjectAtIndex:self.selectedTask withObject:task];
+                                      [self didChangeValueForKey:@"tasks"];
+                                  } else {
+                                      //error
+                                      UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error"
+                                                                                           message:error.description
+                                                                                          delegate:self
+                                                                                 cancelButtonTitle:@"OK"
+                                                                                 otherButtonTitles:nil];
+                                      [aboutAlert show];
+                                  }
+                              }];
+}
+
 -(void)loadTestData
 {
     NSDate *today = [NSDate date];
@@ -100,21 +129,25 @@ static TasksDataController *instance;
     
     GTLTasksTask *item1 = [[GTLTasksTask alloc] init];
     item1.title = @"Lorem ipsum";
+    item1.due = [GTLDateTime dateTimeForAllDayWithDate:today];
     item1.notes = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae fringilla lectus. Phasellus consectetur ultricies tellus, a luctus lectus tempor sit amet. Maecenas condimentum lobortis congue.";
     [self.tasks addObject:item1];
     
     GTLTasksTask *item2 = [[GTLTasksTask alloc] init];
     item2.title = @"Pellentesque elementum";
+    item2.due = [GTLDateTime dateTimeForAllDayWithDate:yesterday];
     item2.notes = @"Cras pellentesque eleifend faucibus. Praesent euismod rutrum lorem non imperdiet. Etiam vel sapien arcu. In ullamcorper facilisis justo quis tincidunt.";
     [self.tasks addObject:item2];
     
     GTLTasksTask *item3 = [[GTLTasksTask alloc] init];
     item3.title = @"Aenean auctor dolor";
+    item3.due = [GTLDateTime dateTimeForAllDayWithDate:tommorrow];
     item3.notes = @"Cras imperdiet dignissim facilisis. Donec feugiat ac erat et mattis.";
     [self.tasks addObject:item3];
     
     GTLTasksTask *item4 = [[GTLTasksTask alloc] init];
     item4.title = @"In tellus diam";
+    item4.due = [GTLDateTime dateTimeForAllDayWithDate:yesterday];
     item4.notes = @"Curabitur vel velit euismod, venenatis odio quis, scelerisque lectus.";
     item4.status = kTaskStatusCompleted;
     [self.tasks addObject:item4];

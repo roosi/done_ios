@@ -25,4 +25,6 @@
 
 -(NSUInteger)countOfTasks;
 -(GTLTasksTask *) objectInTasksAtIndex:(NSUInteger)index;
+
+-(void)patchSelectedTask:(GTLTasksTask*) patch;
 @end
