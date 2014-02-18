@@ -194,10 +194,17 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:100];
+    UILabel *notesLabel = (UILabel *)[cell viewWithTag:101];
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:102];
+    UILabel *dateLabel = (UILabel *)[cell viewWithTag:103];
+    
     GTLTasksTask *item = [self.tasksDataController objectInTasksAtIndex:indexPath.row];
-    cell.textLabel.text = item.title;
-    cell.detailTextLabel.text = [self.dateFormatter stringFromDate:item.due.date];
-    [cell.imageView setImage:[TaskUtils getStatusImage:item]];
+    
+    titleLabel.text = item.title;
+    notesLabel.text = item.notes;
+    [imageView setImage:[TaskUtils getStatusImage:item]];
+    dateLabel.text = [self.dateFormatter stringFromDate:item.due.date];
     
     return cell;
 }
@@ -291,7 +298,7 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
 
 - (IBAction)showInfo:(id)sender {
     UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"done"
-                                                       message:@"powered by Google"
+                                                       message:@"v. 0.1\npowered by Google\n\nGoogle APIs Client Library for Objective-C\nhttp://www.apache.org/licenses/LICENSE-2.0"
                                                       delegate:self
                                              cancelButtonTitle:@"OK"
                                              otherButtonTitles:nil];
