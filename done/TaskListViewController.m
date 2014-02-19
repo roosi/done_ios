@@ -49,6 +49,7 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
     [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    [self.dateFormatter setDateFormat:@"dd.MM"];
     
     self.title = @"";
     

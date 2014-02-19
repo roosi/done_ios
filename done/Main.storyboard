@@ -299,20 +299,20 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Delete" id="QH1-3d-SHz">
+                        <barButtonItem systemItem="trash" id="QH1-3d-SHz">
                             <connections>
                                 <action selector="deleteTaskTapped:" destination="qxS-gA-kfE" id="iEN-B2-qwr"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="d6u-vE-Y8V"/>
-                        <barButtonItem title="Done" id="cXE-Nt-0cN">
+                        <barButtonItem image="check.png" id="cXE-Nt-0cN">
                             <connections>
                                 <action selector="finishTaskTapped:" destination="qxS-gA-kfE" id="XQE-5g-ZRm"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="edit task" id="0Gd-Rm-tJf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="WLx-ib-Sze">
+                        <barButtonItem key="rightBarButtonItem" image="save.png" id="WLx-ib-Sze">
                             <connections>
                                 <segue destination="Ce1-D2-ZYY" kind="unwind" unwindAction="unwindToList:" id="Bbz-Ed-GaE"/>
                             </connections>
@@ -376,6 +376,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
+        <image name="check.png" width="32" height="32"/>
+        <image name="save.png" width="32" height="32"/>
         <image name="status_needs_action.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

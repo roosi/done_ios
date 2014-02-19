@@ -41,6 +41,8 @@
 		5F7FDE9C18AFCD1B00A8F5D1 /* GTLTasksTaskLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FDE9318AFCD1B00A8F5D1 /* GTLTasksTaskLists.m */; };
 		5F7FDE9D18AFCD1B00A8F5D1 /* GTLTasksTasks.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7FDE9518AFCD1B00A8F5D1 /* GTLTasksTasks.m */; };
 		5F7FDEA318B0B26E00A8F5D1 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FDEA218B0B26E00A8F5D1 /* GTMOAuth2ViewTouch.xib */; };
+		5F7FDEAA18B5252800A8F5D1 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FDEA918B5252800A8F5D1 /* save.png */; };
+		5F7FDEAC18B526DB00A8F5D1 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FDEAB18B526DB00A8F5D1 /* check.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,8 @@
 		5F7FDE9418AFCD1B00A8F5D1 /* GTLTasksTasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTLTasksTasks.h; sourceTree = "<group>"; };
 		5F7FDE9518AFCD1B00A8F5D1 /* GTLTasksTasks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTLTasksTasks.m; sourceTree = "<group>"; };
 		5F7FDEA218B0B26E00A8F5D1 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "google-api-objectivec-client-read-only/Source/OAuth2/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = SOURCE_ROOT; };
+		5F7FDEA918B5252800A8F5D1 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
+		5F7FDEAB18B526DB00A8F5D1 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +220,7 @@
 		5F7FD57818A3ECD300A8F5D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5F7FDEA418B5171900A8F5D1 /* BarButton */,
 				5F7FD61418AE919A00A8F5D1 /* status_completed.png */,
 				5F7FD60E18AE918300A8F5D1 /* status_due_closing.png */,
 				5F7FD60F18AE918300A8F5D1 /* status_due.png */,
@@ -337,6 +342,15 @@
 			name = OAuth2;
 			sourceTree = "<group>";
 		};
+		5F7FDEA418B5171900A8F5D1 /* BarButton */ = {
+			isa = PBXGroup;
+			children = (
+				5F7FDEAB18B526DB00A8F5D1 /* check.png */,
+				5F7FDEA918B5252800A8F5D1 /* save.png */,
+			);
+			name = BarButton;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -452,9 +466,11 @@
 			files = (
 				5F7FDEA318B0B26E00A8F5D1 /* GTMOAuth2ViewTouch.xib in Resources */,
 				5F7FD61118AE918300A8F5D1 /* status_due_closing.png in Resources */,
+				5F7FDEAA18B5252800A8F5D1 /* save.png in Resources */,
 				5F7FD5B818A6AA4700A8F5D1 /* Main.storyboard in Resources */,
 				5F7FD61218AE918300A8F5D1 /* status_due.png in Resources */,
 				5F7FD58D18A3ECD300A8F5D1 /* Images.xcassets in Resources */,
+				5F7FDEAC18B526DB00A8F5D1 /* check.png in Resources */,
 				5F7FD61318AE918300A8F5D1 /* status_needs_action.png in Resources */,
 				5F7FD57C18A3ECD300A8F5D1 /* InfoPlist.strings in Resources */,
 				5F7FD61518AE919A00A8F5D1 /* status_completed.png in Resources */,
