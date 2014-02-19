@@ -10,7 +10,7 @@
 
 @class TasksDataController;
 
-@interface TaskViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+@interface TaskViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate>
 
 @property (nonatomic,strong) TasksDataController *dataController;
 

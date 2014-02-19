@@ -70,6 +70,11 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     }
 }
 
+-(void) viewDidAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+}
+
 -(void)signIn
 {
     GTMOAuth2ViewControllerTouch *viewController;

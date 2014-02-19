@@ -117,6 +117,25 @@
     [self.statusImageView setImage: [TaskUtils getStatusImage:self.editedTask]];
 }
 
+- (IBAction)deleteTaskTapped:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete task" delegate:self cancelButtonTitle:@"Cancel Button" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
+    
+    actionSheet.actionSheetStyle = UIActionSheetStyleDefault; [actionSheet showInView:self.view];
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+            [self.dataController.tasks removeObjectAtIndex:[self.dataController selectedTask]];
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+            
+        default:
+            break;
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -126,7 +145,9 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if (sender == self.deleteButton) {
-        [self.dataController.tasks removeObjectAtIndex:[self.dataController selectedTask]];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete task" delegate:self cancelButtonTitle:@"Cancel Button" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
+        
+        actionSheet.actionSheetStyle = UIActionSheetStyleDefault; [actionSheet showInView:self.view];
     }
     else if (sender == self.saveButton) {
         self.editedTask.title = self.titleTextField.text;

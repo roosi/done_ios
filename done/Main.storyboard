@@ -301,7 +301,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <toolbarItems>
                         <barButtonItem title="Delete" id="QH1-3d-SHz">
                             <connections>
-                                <segue destination="Ce1-D2-ZYY" kind="unwind" unwindAction="unwindToList:" id="MyK-77-QG8"/>
+                                <action selector="deleteTaskTapped:" destination="qxS-gA-kfE" id="iEN-B2-qwr"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="d6u-vE-Y8V"/>
