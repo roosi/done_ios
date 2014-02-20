@@ -51,6 +51,15 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     [self.dateFormatter setDateFormat:@"dd.MM"];
     
+    // Initialize Refresh Control
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    
+    // Configure Refresh Control
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    
+    // Configure View Controller
+    [self setRefreshControl:refreshControl];
+    
     self.title = @"";
     
     // Uncomment the following line to preserve selection between presentations.
@@ -69,6 +78,13 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     else {
         [self setAuth];
     }
+}
+
+- (void)refresh:(id)sender
+{
+    [self updateUI];
+    
+    [(UIRefreshControl *)sender endRefreshing];
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -155,29 +171,56 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
 }
 
 - (IBAction)deleteListTapped:(id)sender {
-    
     if ([self.dataController countOfTaskLists] > 1) {
-        [self.dataController.taskLists removeObjectAtIndex:[self.dataController selectedTaskList]];
-    
-        [self.dataController setSelectedTaskList:0];
-        GTLTasksTaskList *list = [self.dataController objectInTaskListsAtIndex:0];
-        [self.tasksDataController setTaskList:list];
-        self.title = list.title;
-    
-        [self.tableView reloadData];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete task list" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
+        
+        actionSheet.actionSheetStyle = UIActionSheetStyleDefault; [actionSheet showInView:self.view];
+    }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0: {
+            [self.dataController.taskLists removeObjectAtIndex:[self.dataController selectedTaskList]];
+            
+            [self.dataController setSelectedTaskList:0];
+            GTLTasksTaskList *list = [self.dataController objectInTaskListsAtIndex:0];
+            [self.tasksDataController setTaskList:list];
+            self.title = list.title;
+            
+            [self.tableView reloadData];
+            break;
+        }
+        default:
+            break;
     }
 }
 
 - (IBAction)createNewListTapped:(id)sender {
-    GTLTasksTaskList *list = [[GTLTasksTaskList alloc]init];
-    list.title = @"new list";
     
-    [self.dataController.taskLists addObject:list];
-    [self.dataController setSelectedTaskList:[self.dataController countOfTaskLists] - 1];
-    [self.tasksDataController setTaskList:list];
-    self.title = list.title;
-    
-    [self.tableView reloadData];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Create list" message:@"Give a name of new list" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 1: {
+            GTLTasksTaskList *list = [[GTLTasksTaskList alloc]init];
+            list.title = [[alertView textFieldAtIndex:0] text];
+            
+            [self.dataController.taskLists addObject:list];
+            [self.dataController setSelectedTaskList:[self.dataController countOfTaskLists] - 1];
+            [self.tasksDataController setTaskList:list];
+            self.title = list.title;
+            
+            [self.tableView reloadData];
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 #pragma mark - Table view data source

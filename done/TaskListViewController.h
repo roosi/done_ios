@@ -12,7 +12,7 @@
 @class TaskListsDataController;
 @class TasksDataController;
 
-@interface TaskListViewController : UITableViewController <TaskListPickerControllerDelegate>
+@interface TaskListViewController : UITableViewController <TaskListPickerControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic,strong) TaskListsDataController *dataController;
 

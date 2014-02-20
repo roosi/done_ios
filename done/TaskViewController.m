@@ -145,7 +145,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if (sender == self.deleteButton) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete task" delegate:self cancelButtonTitle:@"Cancel Button" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete task" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles: nil];
         
         actionSheet.actionSheetStyle = UIActionSheetStyleDefault; [actionSheet showInView:self.view];
     }
