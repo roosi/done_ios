@@ -43,6 +43,7 @@
 		5F7FDEA318B0B26E00A8F5D1 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FDEA218B0B26E00A8F5D1 /* GTMOAuth2ViewTouch.xib */; };
 		5F7FDEAA18B5252800A8F5D1 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FDEA918B5252800A8F5D1 /* save.png */; };
 		5F7FDEAC18B526DB00A8F5D1 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FDEAB18B526DB00A8F5D1 /* check.png */; };
+		5F7FDEAE18B6684A00A8F5D1 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F7FDEAD18B6684A00A8F5D1 /* info.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,7 @@
 		5F7FDEA218B0B26E00A8F5D1 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "google-api-objectivec-client-read-only/Source/OAuth2/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = SOURCE_ROOT; };
 		5F7FDEA918B5252800A8F5D1 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		5F7FDEAB18B526DB00A8F5D1 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		5F7FDEAD18B6684A00A8F5D1 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,6 +347,7 @@
 		5F7FDEA418B5171900A8F5D1 /* BarButton */ = {
 			isa = PBXGroup;
 			children = (
+				5F7FDEAD18B6684A00A8F5D1 /* info.png */,
 				5F7FDEAB18B526DB00A8F5D1 /* check.png */,
 				5F7FDEA918B5252800A8F5D1 /* save.png */,
 			);
@@ -467,6 +470,7 @@
 				5F7FDEA318B0B26E00A8F5D1 /* GTMOAuth2ViewTouch.xib in Resources */,
 				5F7FD61118AE918300A8F5D1 /* status_due_closing.png in Resources */,
 				5F7FDEAA18B5252800A8F5D1 /* save.png in Resources */,
+				5F7FDEAE18B6684A00A8F5D1 /* info.png in Resources */,
 				5F7FD5B818A6AA4700A8F5D1 /* Main.storyboard in Resources */,
 				5F7FD61218AE918300A8F5D1 /* status_due.png in Resources */,
 				5F7FD58D18A3ECD300A8F5D1 /* Images.xcassets in Resources */,
