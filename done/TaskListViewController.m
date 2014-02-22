@@ -253,15 +253,7 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     switch (buttonIndex) {
         case 1: {
-            GTLTasksTaskList *list = [[GTLTasksTaskList alloc]init];
-            list.title = [[alertView textFieldAtIndex:0] text];
-            
-            [self.dataController.taskLists addObject:list];
-            [self.dataController setSelectedTaskList:[self.dataController countOfTaskLists] - 1];
-            [self.tasksDataController setTaskList:list];
-            self.title = list.title;
-            
-            [self.tableView reloadData];
+            [self.dataController createTaskList:[[alertView textFieldAtIndex:0] text]];
             break;
         }
         default:

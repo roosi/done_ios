@@ -85,8 +85,43 @@ static TaskListsDataController *instance;
                                                      }
                                                      else {
                                                          // error
+                                                         UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error" message:error.description delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                                         [aboutAlert show];
                                                      }
                                                  }];
+}
+
+-(GTLTasksTaskList*)createTaskList:(NSString *)title
+{
+    GTLTasksTaskList *newList = [[GTLTasksTaskList alloc]init];
+    newList.title = title;
+    
+    GTLQueryTasks *query = [GTLQueryTasks queryForTasklistsInsertWithObject:newList];
+    
+    GTLServiceTicket *taskListsTicket = [self.service executeQuery:query
+                                                 completionHandler:^(GTLServiceTicket *ticket,
+                                                                     id object, NSError *error) {
+                                                     // callback
+                                                     if (error == nil) {
+                                                         GTLTasksTaskLists *list = object;
+                                                         [self.taskLists addObject:list];
+                                                         [self setSelectedTaskList:[self countOfTaskLists] - 1];
+                                                     }
+                                                     else {
+                                                         // error
+                                                         UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error" message:error.description delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                                         [aboutAlert show];
+                                                     }
+                                                 }];
+    
+
+    
+    return newList;
+}
+
+-(void)deleteTaskList:(GTLTasksTaskList *)taskList
+{
+    
 }
 
 - (void) loadTestData

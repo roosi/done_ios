@@ -22,5 +22,8 @@
 -(NSUInteger) countOfTaskLists;
 -(GTLTasksTaskList *) objectInTaskListsAtIndex:(NSUInteger)index;
 
+-(GTLTasksTaskList*) createTaskList:(NSString*)title;
+-(void) deleteTaskList:(GTLTasksTaskList*)taskList;
+  
 -(void)refresh;
 @end
