@@ -86,23 +86,18 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="q0g-xS-OMT"/>
-                        <barButtonItem title="Create" id="WBo-XB-6Ye">
+                        <barButtonItem systemItem="action" id="UnM-Ri-TqM">
                             <connections>
-                                <action selector="createNewListTapped:" destination="PsJ-mw-Akb" id="eqW-0m-e1Q"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem title="Delete" id="fQg-yK-DXJ">
-                            <connections>
-                                <action selector="deleteListTapped:" destination="PsJ-mw-Akb" id="V3s-ZC-35y"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem title="Select" id="mWi-E8-a5g">
-                            <connections>
-                                <segue destination="z1J-n0-o0d" kind="modal" identifier="SelectTaskList" id="LWP-zx-bAg"/>
+                                <action selector="actionTapped:" destination="PsJ-mw-Akb" id="38n-5d-ogv"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="&lt;tasklist>" id="ajv-fM-AeR">
+                        <barButtonItem key="leftBarButtonItem" image="select.png" id="K9Y-Xl-Z6N">
+                            <connections>
+                                <segue destination="z1J-n0-o0d" kind="modal" identifier="SelectTaskList" id="FJX-dB-VIy"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DK5-Xo-Y5C">
                             <connections>
                                 <segue destination="qxS-gA-kfE" kind="push" identifier="NewTask" id="yRm-52-0if"/>
@@ -387,6 +382,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="check.png" width="32" height="32"/>
         <image name="info.png" width="32" height="32"/>
         <image name="save.png" width="32" height="32"/>
+        <image name="select.png" width="36" height="32"/>
         <image name="status_needs_action.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
