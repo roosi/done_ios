@@ -27,6 +27,7 @@
 -(GTLTasksTask *) objectInTasksAtIndex:(NSUInteger)index;
 
 -(void)patchSelectedTask:(GTLTasksTask*) patch;
+-(GTLTasksTask*)createNewTask;
 
 -(void)refresh;
 @end

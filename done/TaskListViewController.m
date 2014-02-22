@@ -359,14 +359,9 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     }
     else if ([[segue identifier] isEqualToString:@"NewTask"])
     {
-        GTLTasksTask *item = [[GTLTasksTask alloc] init];
-        item.due = [GTLDateTime dateTimeForAllDayWithDate:[NSDate date]];
-
-        [self.tasksDataController.tasks insertObject:item atIndex:0];
-        [self.tasksDataController setSelectedTask:0];
+        [self.tasksDataController createNewTask];
         
         [self.tableView reloadData];
-        
     }
     else if ([[segue identifier] isEqualToString:@"ShowTask"])
     {

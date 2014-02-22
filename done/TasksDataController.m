@@ -93,6 +93,39 @@ static TasksDataController *instance;
     }
 }
 
+-(GTLTasksTask*)createNewTask
+{
+    GTLTasksTask *newTask = [[GTLTasksTask alloc] init];
+    newTask.due = [GTLDateTime dateTimeWithDate:[NSDate date] timeZone:[NSTimeZone defaultTimeZone]];
+    
+    [self.tasks insertObject:newTask atIndex:0];
+    [self setSelectedTask:0];
+    
+    GTLQueryTasks *query = [GTLQueryTasks queryForTasksInsertWithObject:newTask tasklist:self.taskList.identifier];
+    
+    GTLServiceTicket *ticket = [self.service executeQuery:query
+                                        completionHandler:^(GTLServiceTicket *ticket,
+                                                            id item, NSError *error) {
+                                            // callback
+                                            GTLTasksTask *task = item;
+                                            if (error == nil) {
+                                                [self willChangeValueForKey:@"tasks"];
+                                                [self.tasks replaceObjectAtIndex:self.selectedTask withObject:task];
+                                                [self didChangeValueForKey:@"tasks"];
+                                            } else {
+                                                //error
+                                                [self.tasks removeObject:newTask];
+                                                UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error"
+                                                                                                     message:error.description
+                                                                                                    delegate:self
+                                                                                           cancelButtonTitle:@"OK"
+                                                                                           otherButtonTitles:nil];
+                                                [aboutAlert show];
+                                            }
+                                        }];
+    return newTask;
+}
+
 -(void)patchSelectedTask:(GTLTasksTask *)patch
 {    
     GTLTasksTask *task = [self.tasks objectAtIndex:self.selectedTask];
