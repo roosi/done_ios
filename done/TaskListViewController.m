@@ -83,7 +83,7 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
 
 - (void)refresh:(id)sender
 {
-    [self.dataController refresh];
+    [self.tasksDataController refresh];
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -152,11 +152,11 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     else if ([keyPath isEqualToString:@"selectedTaskList"])
     {
         [self updateUI];
-        [self.refreshControl endRefreshing];
     }
     else if ([keyPath isEqualToString:@"tasks"])
     {
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
     }
 }
 

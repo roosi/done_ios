@@ -58,27 +58,32 @@ static TasksDataController *instance;
     if (_taskList != taskList) {
         _taskList = taskList;
         if (self.auth != nil) {
-            [self willChangeValueForKey:@"tasks"];
-            [self.tasks removeAllObjects];
-            [self didChangeValueForKey:@"tasks"];
-            
-            GTLQueryTasks *query = [GTLQueryTasks queryForTasksListWithTasklist:taskList.identifier];
-            
-            GTLServiceTicket *ticket = [self.service executeQuery:query completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
-                if (error == nil) {
-                    GTLTasksTasks *tasks = object;
-                    for (GTLTasksTask *task in tasks)
-                    {
-                        [self insertObject:task inTasksAtIndex:[self countOfTasks]];
-                    }
-                    
-                }
-                else {
-                    // error
-                }
-            }];
+            [self refresh];
         }
     }
+}
+
+-(void)refresh
+{
+    [self willChangeValueForKey:@"tasks"];
+    [self.tasks removeAllObjects];
+    [self didChangeValueForKey:@"tasks"];
+    
+    GTLQueryTasks *query = [GTLQueryTasks queryForTasksListWithTasklist:self.taskList.identifier];
+    
+    GTLServiceTicket *ticket = [self.service executeQuery:query completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+        if (error == nil) {
+            GTLTasksTasks *tasks = object;
+            for (GTLTasksTask *task in tasks)
+            {
+                [self insertObject:task inTasksAtIndex:[self countOfTasks]];
+            }
+            
+        }
+        else {
+            // error
+        }
+    }];
 }
 
 -(void)setTasks:(NSMutableArray *)tasks
