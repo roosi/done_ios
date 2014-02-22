@@ -22,6 +22,7 @@
 @interface TaskListViewController ()
 @property NSDateFormatter *dateFormatter;
 @property GTMOAuth2Authentication *auth;
+@property UIRefreshControl *refreshControl;
 @end
 
 @implementation TaskListViewController
@@ -52,13 +53,13 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     [self.dateFormatter setDateFormat:@"dd.MM"];
     
     // Initialize Refresh Control
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl = [[UIRefreshControl alloc] init];
     
     // Configure Refresh Control
-    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     
     // Configure View Controller
-    [self setRefreshControl:refreshControl];
+    [self setRefreshControl:self.refreshControl];
     
     self.title = @"";
     
@@ -82,9 +83,7 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
 
 - (void)refresh:(id)sender
 {
-    [self updateUI];
-    
-    [(UIRefreshControl *)sender endRefreshing];
+    [self.dataController refresh];
 }
 
 -(void) viewDidAppear:(BOOL)animated
@@ -153,6 +152,7 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
     else if ([keyPath isEqualToString:@"selectedTaskList"])
     {
         [self updateUI];
+        [self.refreshControl endRefreshing];
     }
     else if ([keyPath isEqualToString:@"tasks"])
     {

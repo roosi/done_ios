@@ -59,29 +59,34 @@ static TaskListsDataController *instance;
 
         self.service.authorizer = self.auth;
         
-        [self willChangeValueForKey:@"taskLists"];
-        [self.taskLists removeAllObjects];
-        [self didChangeValueForKey:@"taskLists"];
-        
-        GTLQueryTasks *query = [GTLQueryTasks queryForTasklistsList];
-        
-        GTLServiceTicket *taskListsTicket = [self.service executeQuery:query
-                                                    completionHandler:^(GTLServiceTicket *ticket,
-                                                                    id taskLists, NSError *error) {
-                                                    // callback
-                                                    if (error == nil) {
-                                                        GTLTasksTaskLists *lists = taskLists;
-                                                        for(GTLTasksTaskList *list in lists)
-                                                        {
-                                                            [self insertObject:list inTaskListsAtIndex:[self countOfTaskLists]];
-                                                        }
-                                                        self.selectedTaskList = 0;
-                                                    }
-                                                    else {
-                                                        // error
-                                                    }
-                                                }];
+        [self refresh];
     }
+}
+
+-(void) refresh
+{
+    [self willChangeValueForKey:@"taskLists"];
+    [self.taskLists removeAllObjects];
+    [self didChangeValueForKey:@"taskLists"];
+    
+    GTLQueryTasks *query = [GTLQueryTasks queryForTasklistsList];
+    
+    GTLServiceTicket *taskListsTicket = [self.service executeQuery:query
+                                                 completionHandler:^(GTLServiceTicket *ticket,
+                                                                     id taskLists, NSError *error) {
+                                                     // callback
+                                                     if (error == nil) {
+                                                         GTLTasksTaskLists *lists = taskLists;
+                                                         for(GTLTasksTaskList *list in lists)
+                                                         {
+                                                             [self insertObject:list inTaskListsAtIndex:[self countOfTaskLists]];
+                                                         }
+                                                         self.selectedTaskList = 0;
+                                                     }
+                                                     else {
+                                                         // error
+                                                     }
+                                                 }];
 }
 
 - (void) loadTestData

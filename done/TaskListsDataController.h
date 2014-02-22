@@ -21,4 +21,6 @@
 
 -(NSUInteger) countOfTaskLists;
 -(GTLTasksTaskList *) objectInTaskListsAtIndex:(NSUInteger)index;
+
+-(void)refresh;
 @end
