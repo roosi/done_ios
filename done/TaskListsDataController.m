@@ -85,8 +85,7 @@ static TaskListsDataController *instance;
                                                      }
                                                      else {
                                                          // error
-                                                         UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error" message:error.description delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                                         [aboutAlert show];
+                                                         [self handleError:error];
                                                      }
                                                  }];
 }
@@ -109,8 +108,7 @@ static TaskListsDataController *instance;
                                                      }
                                                      else {
                                                          // error
-                                                         UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error" message:error.description delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                                         [aboutAlert show];
+                                                         [self handleError:error];
                                                      }
                                                  }];
     
@@ -170,4 +168,13 @@ static TaskListsDataController *instance;
     [self.taskLists removeObjectAtIndex:index];
 }
 
+-(void)handleError:(NSError*) error
+{
+    UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error"
+                                                         message:error.description
+                                                        delegate:self
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+    [aboutAlert show];
+}
 @end

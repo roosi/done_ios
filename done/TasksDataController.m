@@ -78,10 +78,10 @@ static TasksDataController *instance;
             {
                 [self insertObject:task inTasksAtIndex:[self countOfTasks]];
             }
-            
         }
         else {
             // error
+            [self handleError:error];
         }
     }];
 }
@@ -114,13 +114,7 @@ static TasksDataController *instance;
                                                 [self didChangeValueForKey:@"tasks"];
                                             } else {
                                                 //error
-                                                [self.tasks removeObject:newTask];
-                                                UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error"
-                                                                                                     message:error.description
-                                                                                                    delegate:self
-                                                                                           cancelButtonTitle:@"OK"
-                                                                                           otherButtonTitles:nil];
-                                                [aboutAlert show];
+                                                [self handleError:error];
                                             }
                                         }];
     return newTask;
@@ -145,12 +139,7 @@ static TasksDataController *instance;
                                       [self didChangeValueForKey:@"tasks"];
                                   } else {
                                       //error
-                                      UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error"
-                                                                                           message:error.description
-                                                                                          delegate:self
-                                                                                 cancelButtonTitle:@"OK"
-                                                                                 otherButtonTitles:nil];
-                                      [aboutAlert show];
+                                      [self handleError:error];
                                   }
                               }];
 }
@@ -170,12 +159,7 @@ static TasksDataController *instance;
                                                 [self didChangeValueForKey:@"tasks"];
                                             } else {
                                                 //error
-                                                UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error"
-                                                                                                     message:error.description
-                                                                                                    delegate:self
-                                                                                           cancelButtonTitle:@"OK"
-                                                                                           otherButtonTitles:nil];
-                                                [aboutAlert show];
+                                                [self handleError:error];
                                             }
                                         }];
 }
@@ -240,4 +224,13 @@ static TasksDataController *instance;
     [self.tasks removeObjectAtIndex:index];
 }
 
+-(void)handleError:(NSError*) error
+{
+    UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error"
+                                                         message:error.description
+                                                        delegate:self
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+    [aboutAlert show];
+}
 @end
