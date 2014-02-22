@@ -28,6 +28,7 @@
 
 -(void)patchSelectedTask:(GTLTasksTask*) patch;
 -(GTLTasksTask*)createNewTask;
+-(void)deleteTask:(GTLTasksTask*) task;
 
 -(void)refresh;
 @end

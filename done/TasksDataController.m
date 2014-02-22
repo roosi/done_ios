@@ -155,6 +155,32 @@ static TasksDataController *instance;
                               }];
 }
 
+-(void)deleteTask:(GTLTasksTask *)task
+{
+    GTLQueryTasks *query = [GTLQueryTasks queryForTasksDeleteWithTasklist:self.taskList.identifier
+                                                                  task:task.identifier];
+    
+    GTLServiceTicket *ticket = [self.service executeQuery:query
+                                        completionHandler:^(GTLServiceTicket *ticket,
+                                                            id item, NSError *error) {
+                                            // callback
+                                            if (error == nil) {
+                                                [self willChangeValueForKey:@"tasks"];
+                                                [self.tasks removeObject:task];
+                                                [self didChangeValueForKey:@"tasks"];
+                                            } else {
+                                                //error
+                                                UIAlertView *aboutAlert = [[UIAlertView alloc] initWithTitle:@"Network error"
+                                                                                                     message:error.description
+                                                                                                    delegate:self
+                                                                                           cancelButtonTitle:@"OK"
+                                                                                           otherButtonTitles:nil];
+                                                [aboutAlert show];
+                                            }
+                                        }];
+}
+
+
 -(void)loadTestData
 {
     NSDate *today = [NSDate date];

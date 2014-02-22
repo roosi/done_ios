@@ -127,7 +127,7 @@
 {
     switch (buttonIndex) {
         case 0:
-            [self.dataController.tasks removeObjectAtIndex:[self.dataController selectedTask]];
+            [self.dataController deleteTask:self.task];
             [self.navigationController popViewControllerAnimated:YES];
             break;
             
