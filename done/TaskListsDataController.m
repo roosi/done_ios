@@ -112,14 +112,36 @@ static TaskListsDataController *instance;
                                                      }
                                                  }];
     
-
-    
     return newList;
 }
 
 -(void)deleteTaskList:(GTLTasksTaskList *)taskList
 {
+    GTLQueryTasks *query = [GTLQueryTasks queryForTasklistsDeleteWithTasklist:taskList.identifier];
     
+    GTLServiceTicket *taskListsTicket = [self.service executeQuery:query
+                                                 completionHandler:^(GTLServiceTicket *ticket,
+                                                                     id object, NSError *error) {
+                                                     // callback
+                                                     if (error == nil) {
+                                                         NSUInteger index = [self.taskLists indexOfObject:taskList];
+                                                         [self.taskLists removeObject:taskList];
+                                                         
+                                                         if (self.selectedTaskList == index)
+                                                         {
+                                                             // current list was selected
+                                                             if (index > 0)
+                                                             {
+                                                                 index = index - 1;
+                                                             }
+                                                             [self setSelectedTaskList:[self countOfTaskLists] - 1];
+                                                         }
+                                                     }
+                                                     else {
+                                                         // error
+                                                         [self handleError:error];
+                                                     }
+                                                 }];
 }
 
 - (void) loadTestData

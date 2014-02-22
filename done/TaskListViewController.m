@@ -226,14 +226,9 @@ NSString *scope = @"https://www.googleapis.com/auth/tasks"; // scope for Google+
 
 -(void)deleteCurrentList
 {
-    [self.dataController.taskLists removeObjectAtIndex:[self.dataController selectedTaskList]];
+    GTLTasksTaskList *list = [self.dataController.taskLists objectAtIndex:[self.dataController selectedTaskList]];
     
-    [self.dataController setSelectedTaskList:0];
-    GTLTasksTaskList *list = [self.dataController objectInTaskListsAtIndex:0];
-    [self.tasksDataController setTaskList:list];
-    self.title = list.title;
-    
-    [self.tableView reloadData];
+    [self.dataController deleteTaskList:list];
 }
 
 -(void)createNewList
